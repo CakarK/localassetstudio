@@ -1,0 +1,44 @@
+{
+  "package": "three",
+  "version": "0.170.0",
+  "tarball": "https://registry.npmjs.org/three/-/three-0.170.0.tgz",
+  "integrity": "sha512-FQK+LEpYc0fBD+J8g6oSEyyNzjp+Q7Ks1C568WWaoMRLW+TkNNWmenWeGgJjV105Gd+p/2ql1ZcjYvNiPZBhuQ==",
+  "files": {
+    "three.module.js": {
+      "source": "package/build/three.module.min.js",
+      "upstream_sha256": "08fd7545d13d2c7fb65ab691530a802dafefd638596501854f267d0fb13c39e7",
+      "local_sha256": "08fd7545d13d2c7fb65ab691530a802dafefd638596501854f267d0fb13c39e7",
+      "bytes": 691648
+    },
+    "GLTFLoader.js": {
+      "source": "package/examples/jsm/loaders/GLTFLoader.js",
+      "upstream_sha256": "45139faddd5aaf48ed2d62203d976e5cbd703db1a592de40527f9f6cf58abd44",
+      "local_sha256": "458b025b12213713958b07012b48aa5e84aebb562c92cfe53ea82d41bda2fd42",
+      "bytes": 110278
+    },
+    "OrbitControls.js": {
+      "source": "package/examples/jsm/controls/OrbitControls.js",
+      "upstream_sha256": "80efaadea4f8a636a65fb0bd08bfef62f3d93a0bb94e2e7500f23176c5c07f4e",
+      "local_sha256": "6f3052dd8860a60fe6999260d50558ff54609523724c6e374326228e5590cf55",
+      "bytes": 32146
+    },
+    "BufferGeometryUtils.js": {
+      "source": "package/examples/jsm/utils/BufferGeometryUtils.js",
+      "upstream_sha256": "c25b7930e570e9ec56173cd3b866ec8d2e10016630db3937efb439daf1cedbf6",
+      "local_sha256": "3de832095679e56578beddf70f3e90846a47ec8a886fa8eb21c973cdaef88922",
+      "bytes": 31780
+    },
+    "RoomEnvironment.js": {
+      "source": "package/examples/jsm/environments/RoomEnvironment.js",
+      "upstream_sha256": "85869bdd22f7cf0b22e68dcefe6cb710480af0f5c901a76f7a7764fd07fc8014",
+      "local_sha256": "29d31eeb8abb5e4105bee7837e825c5ebb0ebbb2a2fe9f1e4b8b6604296ee3c7",
+      "bytes": 3618
+    },
+    "LICENSE": {
+      "source": "package/LICENSE",
+      "upstream_sha256": "4c40a1ef62450b857c3b2aaf294936304cd552d965fbcd9d32d4c5bcf4ba4454",
+      "local_sha256": "4c40a1ef62450b857c3b2aaf294936304cd552d965fbcd9d32d4c5bcf4ba4454",
+      "bytes": 1081
+    }
+  }
+}

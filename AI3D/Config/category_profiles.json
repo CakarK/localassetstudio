@@ -1,0 +1,111 @@
+{
+  "version": "category-adaptive-3.5.0",
+  "active": false,
+  "asset_profiles": {},
+  "profiles": {
+    "Buildings": {
+      "preferred_provider": null,
+      "alternative_provider": null,
+      "prompt_template": "{prompt}\nComposition for this exact asset: {camera}",
+      "camera_composition": "Entire object, elevated three-quarter view, generous margins, plain neutral background.",
+      "segmentation_strategy": "existing-u2net",
+      "reference_gate_profile": "building",
+      "geometry_gate_profile": "building",
+      "polygon_budget": "inherit_exact_catalog",
+      "texture_preset": "inherit_exact_catalog",
+      "evidence_level": "exploratory",
+      "automatic_acceptance": false
+    },
+    "Towers": {
+      "preferred_provider": null,
+      "alternative_provider": null,
+      "prompt_template": "{prompt}\nComposition for this exact asset: {camera}",
+      "camera_composition": "Full tower from footings to top, portrait-friendly framing; no cropped roof or legs.",
+      "segmentation_strategy": "existing-u2net",
+      "reference_gate_profile": "tower",
+      "geometry_gate_profile": "tower",
+      "polygon_budget": "inherit_exact_catalog",
+      "texture_preset": "inherit_exact_catalog",
+      "evidence_level": "exploratory",
+      "automatic_acceptance": false
+    },
+    "Organic": {
+      "preferred_provider": null,
+      "alternative_provider": null,
+      "prompt_template": "{prompt}\nComposition for this exact asset: {camera}",
+      "camera_composition": "One whole natural tree or shrub, include all roots, trunk, branches and canopy. No treehouses or buildings.",
+      "segmentation_strategy": "adaptive-border",
+      "reference_gate_profile": "tree",
+      "geometry_gate_profile": "tree",
+      "polygon_budget": "inherit_exact_catalog",
+      "texture_preset": "inherit_exact_catalog",
+      "evidence_level": "exploratory",
+      "automatic_acceptance": false
+    },
+    "Debris": {
+      "preferred_provider": null,
+      "alternative_provider": null,
+      "prompt_template": "{prompt}\nComposition for this exact asset: {camera}",
+      "camera_composition": "Entire object, elevated three-quarter view, generous margins, plain neutral background.",
+      "segmentation_strategy": "existing-u2net",
+      "reference_gate_profile": "debris",
+      "geometry_gate_profile": "debris",
+      "polygon_budget": "inherit_exact_catalog",
+      "texture_preset": "inherit_exact_catalog",
+      "evidence_level": "exploratory",
+      "automatic_acceptance": false
+    },
+    "Industrial": {
+      "preferred_provider": null,
+      "alternative_provider": null,
+      "prompt_template": "{prompt}\nComposition for this exact asset: {camera}",
+      "camera_composition": "Entire object, elevated three-quarter view, generous margins, plain neutral background.",
+      "segmentation_strategy": "existing-u2net",
+      "reference_gate_profile": "building",
+      "geometry_gate_profile": "building",
+      "polygon_budget": "inherit_exact_catalog",
+      "texture_preset": "inherit_exact_catalog",
+      "evidence_level": "insufficient",
+      "automatic_acceptance": false
+    },
+    "Props": {
+      "preferred_provider": null,
+      "alternative_provider": null,
+      "prompt_template": "{prompt}\nComposition for this exact asset: {camera}",
+      "camera_composition": "Entire object, elevated three-quarter view, generous margins, plain neutral background.",
+      "segmentation_strategy": "existing-u2net",
+      "reference_gate_profile": "prop",
+      "geometry_gate_profile": "prop",
+      "polygon_budget": "inherit_exact_catalog",
+      "texture_preset": "inherit_exact_catalog",
+      "evidence_level": "insufficient",
+      "automatic_acceptance": false
+    },
+    "Vehicles": {
+      "preferred_provider": null,
+      "alternative_provider": null,
+      "prompt_template": "{prompt}\nComposition for this exact asset: {camera}",
+      "camera_composition": "Entire object, elevated three-quarter view, generous margins, plain neutral background.",
+      "segmentation_strategy": "existing-u2net",
+      "reference_gate_profile": "prop",
+      "geometry_gate_profile": "prop",
+      "polygon_budget": "inherit_exact_catalog",
+      "texture_preset": "inherit_exact_catalog",
+      "evidence_level": "insufficient",
+      "automatic_acceptance": false
+    },
+    "Landmarks": {
+      "preferred_provider": null,
+      "alternative_provider": null,
+      "prompt_template": "{prompt}\nComposition for this exact asset: {camera}",
+      "camera_composition": "Entire object, elevated three-quarter view, generous margins, plain neutral background.",
+      "segmentation_strategy": "existing-u2net",
+      "reference_gate_profile": "debris",
+      "geometry_gate_profile": "debris",
+      "polygon_budget": "inherit_exact_catalog",
+      "texture_preset": "inherit_exact_catalog",
+      "evidence_level": "insufficient",
+      "automatic_acceptance": false
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "quality": {
+    "provider": "ollama",
+    "model": "qwen3.6:27b",
+    "fallback_model": null,
+    "url": "http://127.0.0.1:11434",
+    "temperature": 0,
+    "num_ctx": 16384,
+    "max_output_tokens": 6000,
+    "timeout": 480,
+    "seed": 42,
+    "minimum_free_mib": 19000,
+    "image_strategy": "six",
+    "protocol": "qwen-evidence-3.2",
+    "grounding": false,
+    "allow_automatic_visual_approval": false,
+    "model_digests": {
+      "gemma3:4b": "68ceab7e468a31c988b44d5a4984a0e21f58c4f7158c6ce29c1804babac38df7",
+      "qwen3.6:27b": "a50eda8ed977ab48a12431878896b27ffd5cef552c17af3317d9623b939a7f1e"
+    }
+  },
+  "model_profiles": {
+    "gemma3:4b": {"num_ctx":8192,"max_output_tokens":4096,"minimum_free_mib":8192,"timeout":240,"protocol":"grounded-compact-3.1","grounding":true},
+    "gemma3:12b": {"num_ctx":8192,"max_output_tokens":4096,"minimum_free_mib":14000,"timeout":360,"protocol":"grounded-compact-3.1","grounding":true}
+  }
+}

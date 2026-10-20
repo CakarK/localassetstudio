@@ -1,0 +1,61 @@
+{
+  "version": "3.5.0",
+  "profiles": {
+    "Buildings": {
+      "preferred_provider": null,
+      "alternative_provider": null,
+      "status": "InsufficientEvidence",
+      "scope": "Evaluate with your own assets; no preset game campaign evidence is bundled.",
+      "activate_automatically": false
+    },
+    "Towers": {
+      "preferred_provider": null,
+      "alternative_provider": null,
+      "status": "InsufficientEvidence",
+      "scope": "Evaluate with your own assets; no preset game campaign evidence is bundled.",
+      "activate_automatically": false
+    },
+    "Organic": {
+      "preferred_provider": null,
+      "alternative_provider": null,
+      "status": "InsufficientEvidence",
+      "scope": "Evaluate with your own assets; no preset game campaign evidence is bundled.",
+      "activate_automatically": false
+    },
+    "Debris": {
+      "preferred_provider": null,
+      "alternative_provider": null,
+      "status": "InsufficientEvidence",
+      "scope": "Evaluate with your own assets; no preset game campaign evidence is bundled.",
+      "activate_automatically": false
+    },
+    "Industrial": {
+      "preferred_provider": null,
+      "alternative_provider": null,
+      "status": "InsufficientEvidence",
+      "scope": "Evaluate with your own assets; no preset game campaign evidence is bundled.",
+      "activate_automatically": false
+    },
+    "Props": {
+      "preferred_provider": null,
+      "alternative_provider": null,
+      "status": "InsufficientEvidence",
+      "scope": "Evaluate with your own assets; no preset game campaign evidence is bundled.",
+      "activate_automatically": false
+    },
+    "Vehicles": {
+      "preferred_provider": null,
+      "alternative_provider": null,
+      "status": "InsufficientEvidence",
+      "scope": "Evaluate with your own assets; no preset game campaign evidence is bundled.",
+      "activate_automatically": false
+    },
+    "Landmarks": {
+      "preferred_provider": null,
+      "alternative_provider": null,
+      "status": "InsufficientEvidence",
+      "scope": "Evaluate with your own assets; no preset game campaign evidence is bundled.",
+      "activate_automatically": false
+    }
+  }
+}

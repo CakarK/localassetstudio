@@ -1,0 +1,163 @@
+{
+  "1": {
+    "class_type": "LocalAssetStudioPrompt",
+    "inputs": {
+      "text": "",
+      "translate_optimize": true,
+      "project_name": "asset_001"
+    }
+  },
+  "2": {
+    "class_type": "CheckpointLoaderSimple",
+    "inputs": {
+      "ckpt_name": "dreamshaper_8.safetensors"
+    }
+  },
+  "3": {
+    "class_type": "CLIPTextEncode",
+    "inputs": {
+      "text": [
+        "1",
+        0
+      ],
+      "clip": [
+        "2",
+        1
+      ]
+    }
+  },
+  "4": {
+    "class_type": "CLIPTextEncode",
+    "inputs": {
+      "text": "cropped, multiple objects, text, watermark, people, complex background, blur, distorted perspective",
+      "clip": [
+        "2",
+        1
+      ]
+    }
+  },
+  "5": {
+    "class_type": "EmptyLatentImage",
+    "inputs": {
+      "width": 512,
+      "height": 512,
+      "batch_size": 1
+    }
+  },
+  "6": {
+    "class_type": "KSampler",
+    "inputs": {
+      "model": [
+        "2",
+        0
+      ],
+      "positive": [
+        "3",
+        0
+      ],
+      "negative": [
+        "4",
+        0
+      ],
+      "latent_image": [
+        "5",
+        0
+      ],
+      "seed": 42,
+      "steps": 25,
+      "cfg": 7.0,
+      "sampler_name": "dpmpp_2m",
+      "scheduler": "karras",
+      "denoise": 1.0
+    }
+  },
+  "7": {
+    "class_type": "VAEDecode",
+    "inputs": {
+      "samples": [
+        "6",
+        0
+      ],
+      "vae": [
+        "2",
+        2
+      ]
+    }
+  },
+  "8": {
+    "class_type": "LocalAssetStudioImageCheckpoint",
+    "inputs": {
+      "image": [
+        "7",
+        0
+      ],
+      "project_name": "asset_001",
+      "remove_background": true
+    }
+  },
+  "9": {
+    "class_type": "SaveImage",
+    "inputs": {
+      "images": [
+        "8",
+        0
+      ],
+      "filename_prefix": "asset_001/preprocessed_view"
+    }
+  },
+  "10": {
+    "class_type": "LocalAssetStudioShape",
+    "inputs": {
+      "image": [
+        "8",
+        0
+      ],
+      "project_name": "asset_001",
+      "seed": 42,
+      "steps": 30,
+      "resolution": 384,
+      "polygon_target": 80000,
+      "allow_oom_retry": false
+    }
+  },
+  "11": {
+    "class_type": "LocalAssetStudioExport",
+    "inputs": {
+      "mesh": [
+        "13",
+        0
+      ],
+      "project_name": "asset_001",
+      "format": "glb",
+      "height_m": 1.0,
+      "output_directory": ""
+    }
+  },
+  "12": {
+    "class_type": "Preview3D",
+    "inputs": {
+      "model_file": [
+        "11",
+        0
+      ]
+    }
+  },
+  "13": {
+    "class_type": "LocalAssetStudioPBR",
+    "inputs": {
+      "mesh": [
+        "10",
+        0
+      ],
+      "image": [
+        "8",
+        0
+      ],
+      "project_name": "asset_001",
+      "texture_size": 2048,
+      "view_size": 512,
+      "steps": 10,
+      "seed": 42
+    }
+  }
+}

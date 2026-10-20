@@ -10,7 +10,7 @@ Design a reference, choose what to build, run a persistent production queue, and
 
 ## What it does
 
-- Create new assets from Turkish/English prompts or the bundled example catalog.
+- Create new assets from Turkish/English prompts or your own optional catalog.
 - Iterate on reference designs through prompt and component changes; select references for 3D production.
 - Run manual 3D selections and review-driven regenerations in one persistent, reorderable queue.
 - See the active asset, actual stage, measured stage time, pending items, and failure reasons.
@@ -93,7 +93,7 @@ The studio generates a local access code in `AI3D/State/web-access-code.txt`. Fo
 
 ## Production and review
 
-1. Create an asset or select an example catalog entry. Describe the reference you want.
+1. Create an asset or select an entry from your own catalog. Describe the reference you want.
 2. Generate a reference and change the prompt as needed. Ordinary reference generation is not a background image queue.
 3. Select suitable references, add them to 3D production, and start the queue.
 4. Use `/queue` to see names, notes, actual stages and failures. Reorder or remove waiting work there.
@@ -118,12 +118,10 @@ Run the existing tests with an environment containing the locked Python dependen
 .\AI3D\.venv\Scripts\python.exe -m unittest discover -s tests -v
 ```
 
-Source-release verification: **280 tests passed, 9 optional installation/evidence checks skipped** (289 discovered). No private evidence files or external runtime source are bundled.
+Source-release verification: **287 tests passed, 9 optional installation/evidence checks skipped** (296 discovered). No private evidence files or external runtime source are bundled.
 
 Tests use isolated fixtures and mocked inference; passing them does not prove that your GPU models, Blender or ComfyUI installation are configured. Do not run integration tests that acquire the global production lock while real production is active. See [CONTRIBUTING.md](CONTRIBUTING.md).
 
-The implementation keeps the legacy `ai3d_manager` module and launcher names for compatibility. The project and web application are named **Local Asset Studio**. The bundled Reİstanbul catalog is an example asset pack; replace it with your own catalog/style for another game.
+The implementation keeps the legacy `ai3d_manager` module and launcher names for compatibility. The project and web application are named **Local Asset Studio**.
 
-## License
-
-Original project code is provided under the [MIT License](LICENSE). Bundled Three.js code retains its own MIT notice. External models, ComfyUI, Blender and other dependencies retain their separate licenses and usage restrictions. The project license does not grant rights to model weights or remove model-specific restrictions; consult [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md) and the upstream terms before use or redistribution.
+The public distribution contains **no game catalog, game prompts, shared art direction, character names or game grid settings**. It opens in custom-prompt mode with an empty catalog. Enter your own optional style and negative prompt in the web form. An optional JSON catalog can be selected with `LAS_CATALOG_PATH`; see [catalog configuration](docs/INSTALLATION.md#your-own-catalog).

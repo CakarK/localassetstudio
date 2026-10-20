@@ -1,0 +1,150 @@
+{
+  "version": 1,
+  "grid_cell_m": 1.5,
+  "shared_style": "Neutral product rendering. Readable silhouette. PBR materials.",
+  "shared_negative": "no ground plane, no floating parts",
+  "assets": [
+    {
+      "asset_id": "DemoCabin",
+      "name_tr": "DemoCabin",
+      "name_en": "DemoCabin",
+      "category": "Buildings",
+      "category_profile": "Buildings",
+      "phase35_gate_profile": "shelter",
+      "grid": [
+        2,
+        2
+      ],
+      "prompt": "A complete freestanding garden shed. Wooden panels. A pitched metal roof. A blue painted door. Capacity for two people. 3 x 3 meters footprint.",
+      "period": "demo",
+      "polygon_target": 7200,
+      "polygon_range": [
+        3600,
+        14400
+      ]
+    },
+    {
+      "asset_id": "DemoTower",
+      "name_tr": "DemoTower",
+      "name_en": "DemoTower",
+      "category": "Buildings",
+      "category_profile": "Towers",
+      "phase35_gate_profile": "tower",
+      "grid": [
+        1,
+        1
+      ],
+      "prompt": "A complete metal observation tower with a square viewing deck.",
+      "period": "demo",
+      "polygon_target": 5000,
+      "polygon_range": [
+        2500,
+        10000
+      ]
+    },
+    {
+      "asset_id": "DemoTree",
+      "name_tr": "DemoTree",
+      "name_en": "DemoTree",
+      "category": "Environment",
+      "category_profile": "Organic",
+      "phase35_gate_profile": "tree",
+      "grid": null,
+      "prompt": "A complete leafy tree with a single trunk and a rounded canopy.",
+      "period": "demo",
+      "polygon_target": 2400,
+      "polygon_range": [
+        1200,
+        4800
+      ]
+    },
+    {
+      "asset_id": "DemoPile",
+      "name_tr": "DemoPile",
+      "name_en": "DemoPile",
+      "category": "Environment",
+      "category_profile": "Debris",
+      "phase35_gate_profile": "debris",
+      "grid": null,
+      "prompt": "A compact pile of broken clay bricks.",
+      "period": "demo",
+      "polygon_target": 1800,
+      "polygon_range": [
+        900,
+        3600
+      ]
+    },
+    {
+      "asset_id": "DemoMarker",
+      "name_tr": "DemoMarker",
+      "name_en": "DemoMarker",
+      "category": "Buildings",
+      "category_profile": "Buildings",
+      "phase35_gate_profile": "building",
+      "grid": [
+        1,
+        1
+      ],
+      "prompt": "A square wooden sign stand with a rectangular panel.",
+      "period": "demo",
+      "polygon_target": 2100,
+      "polygon_range": [
+        1050,
+        4200
+      ]
+    },
+    {
+      "asset_id": "DemoFigure",
+      "name_tr": "DemoFigure",
+      "name_en": "DemoFigure",
+      "category": "CharactersVehicles",
+      "category_profile": null,
+      "phase35_gate_profile": "prop",
+      "grid": null,
+      "prompt": "A complete neutral mannequin figure.",
+      "period": "demo",
+      "polygon_target": 3600,
+      "polygon_range": [
+        1800,
+        7200
+      ]
+    },
+    {
+      "asset_id": "DemoHall",
+      "name_tr": "DemoHall",
+      "name_en": "DemoHall",
+      "category": "Buildings",
+      "category_profile": "Buildings",
+      "phase35_gate_profile": "building",
+      "grid": [
+        3,
+        3
+      ],
+      "prompt": "A complete brick exhibition hall with a curved metal roof.",
+      "period": "demo",
+      "polygon_target": 14000,
+      "polygon_range": [
+        7000,
+        28000
+      ]
+    },
+    {
+      "asset_id": "DemoCanopy",
+      "name_tr": "DemoCanopy",
+      "name_en": "DemoCanopy",
+      "category": "Buildings",
+      "category_profile": "Buildings",
+      "phase35_gate_profile": "building",
+      "grid": [
+        3,
+        2
+      ],
+      "prompt": "A complete fabric shade canopy with four poles.",
+      "period": "demo",
+      "polygon_range": [
+        3000,
+        12000
+      ]
+    }
+  ]
+}
