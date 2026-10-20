@@ -15,15 +15,25 @@ Yerel GPU üzerinde çalışan; prompt'tan referans görsel, 3D model, PBR ve Bl
 - Revizyon notlarından yeni aday üretimi; eski model korunur ve aynı karar için sınırsız otomatik retry yapılmaz.
 - Aynı güvenilir yerel ağdaki diğer bilgisayarlardan erişim.
 
-Bu sürüm kaynak kod paylaşımıdır; model ağırlıkları, Python/ComfyUI ortamları, erişim kodları, veritabanları ve üretilmiş varlıklar dahil değildir. Tek tıklamalı taşınabilir kurulum olduğu iddia edilmez. Ayrı Hunyuan ve güncel görsel ComfyUI ortamlarını kurup model yollarını ayarlamak gerekir.
-
-Kurulum tamamlandıktan sonra proje kökünde:
+Windows 11 x64 üzerinde PowerShell açıp **tek komut** çalıştırın. Git veya Python'un önceden kurulu olması gerekmez:
 
 ```powershell
-.\Start-AI3D.ps1 -NoBrowser
-.\Start-ImageProviders.ps1 -NoBrowser
-.\Start-AssetStudio.ps1 -NoBrowser
+powershell -NoProfile -ExecutionPolicy Bypass -Command "irm https://raw.githubusercontent.com/CakarK/localassetstudio/main/install.ps1 | iex"
 ```
+
+Kurucu `%LOCALAPPDATA%\LocalAssetStudio` altına projeyi indirir; taşınabilir Git/uv/Blender/Ollama, Python 3.12.11, ayrı Hunyuan ve görsel ComfyUI ortamları, üç görsel üretici, Hunyuan/DINO/U2Net ve Ollama modellerini hazırlar. CUDA/eklenti/Blender kontrollerinden sonra servisleri başlatıp arayüzü açar. **Kurulum asset üretimi veya AI inference başlatmaz.**
+
+Yaklaşık **93 GB model indirmesi**, ayrıca paket ve çalışma ortamı indirmeleri vardır. Temiz kurulum için **180 GiB boş alan**, uygun NVIDIA sürücüsü ve **24 GB VRAM** gerekir. Bağlantı kesilirse aynı komutla devam edebilirsiniz. Eski model ve kaynak sürümleri uyumsuzsa üzerine yazılmaz. [Bileşen lisansları](THIRD_PARTY_NOTICES.md) geçerlidir.
+
+Projeyi zaten klonladıysanız:
+
+```powershell
+powershell -NoProfile -ExecutionPolicy Bypass -File .\Install-LocalAssetStudio.ps1
+```
+
+`-Plan` indirme/kurulum planını hiçbir değişiklik yapmadan gösterir. `-NoStart` servisleri son aşamada başlatmaz; Ollama model hazırlığı sırasında yerel Ollama servisi gerekir. Sonraki açılışlarda `Start-LocalAssetStudio.ps1` bütün servisleri birlikte başlatır. Farklı disk, yeniden çalıştırma ve servis çakışmaları için [kurulum belgesine](docs/INSTALLATION.md) bakın.
+
+Kurucunun hash, kesilen indirme, dosya koruma ve Windows PowerShell testleri ile bağımlılık çözümlemesi doğrulandı. **Temiz Windows'ta bütün büyük indirmeler ve GPU üretimi henüz uçtan uca sertifikalandırılmadı.** Kurucu hedef bilgisayarda gerçek smoke kontrollerini yapar; başarısız kontrolü tamamlandı saymaz.
 
 Atölye: `http://localhost:8088` · Canlı sıra: `/queue` · 3D inceleme: `/reviews`.
 

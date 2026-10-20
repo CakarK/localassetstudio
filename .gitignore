@@ -35,6 +35,12 @@ AI3D/Tests/
 AI3D/Sprints/
 AI3D/UnrealPilot/
 AI3D/.cache/
+AI3D/Tools/
+AI3D/*.installing/
+AI3D/*.installing.owner
+AI3D/ComfyUI/custom_nodes/*.installing/
+AI3D/ComfyUI/custom_nodes/*.installing.owner
+.source-revision
 .codex-remote-attachments/
 .publish/
 graphify-out/

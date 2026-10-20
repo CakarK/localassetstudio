@@ -38,7 +38,7 @@ ALLOWED_SETTINGS=set(DEFAULTS)|{'prompt','prompt_language','style','negative','v
 def settings_for(asset,overrides=None):
     overrides=overrides or {}
     if set(overrides)-ALLOWED_SETTINGS:raise ValueError('Unknown setting(s): '+', '.join(set(overrides)-ALLOWED_SETTINGS))
-    result={**DEFAULTS,**{k:asset.get(k) for k in ('polygon_target','polygon_range','footprint_m','height_m','texture_size')},**overrides}
+    result={**DEFAULTS,'blender':os.environ.get('LAS_BLENDER_PATH',DEFAULTS['blender']),**{k:asset.get(k) for k in ('polygon_target','polygon_range','footprint_m','height_m','texture_size')},**overrides}
     if not isinstance(result['polygon_target'],int) or result['polygon_target']<100:raise ValueError('Invalid polygon target')
     if result['texture_size'] not in (512,1024,2048,4096):raise ValueError('Unsupported texture size')
     if result['footprint_m'] is not None and (len(result['footprint_m'])!=2 or min(result['footprint_m'])<=0):raise ValueError('Invalid footprint')

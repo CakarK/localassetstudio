@@ -1,0 +1,250 @@
+aiohappyeyeballs==2.7.1
+    # via aiohttp
+aiohttp==3.14.5
+    # via -r AI3D/image-requirements.in
+aiosignal==1.4.0
+    # via aiohttp
+alembic==1.20.0
+    # via -r AI3D/image-requirements.in
+annotated-doc==0.0.5
+    # via typer
+annotated-types==0.8.0
+    # via pydantic
+anyio==4.15.1
+    # via httpx
+attrs==26.1.0
+    # via aiohttp
+av==19.0.1
+    # via -r AI3D/image-requirements.in
+blake3==1.0.11
+    # via -r AI3D/image-requirements.in
+certifi==2026.10.19
+    # via
+    #   httpcore
+    #   httpx
+    #   requests
+charset-normalizer==3.5.2
+    # via requests
+colorama==0.4.6
+    # via
+    #   tqdm
+    #   typer
+comfy-aimdo==0.5.6
+    # via -r AI3D/image-requirements.in
+comfy-kitchen==0.2.39
+    # via -r AI3D/image-requirements.in
+comfyui-embedded-docs==0.4.3
+    # via -r AI3D/image-requirements.in
+comfyui-frontend-package==1.41.21
+    # via -r AI3D/image-requirements.in
+comfyui-workflow-templates==0.9.43
+    # via -r AI3D/image-requirements.in
+comfyui-workflow-templates-core==0.3.192
+    # via comfyui-workflow-templates
+comfyui-workflow-templates-media-api==0.3.68
+    # via comfyui-workflow-templates
+comfyui-workflow-templates-media-image==0.3.117
+    # via comfyui-workflow-templates
+comfyui-workflow-templates-media-other==0.3.164
+    # via comfyui-workflow-templates
+comfyui-workflow-templates-media-video==0.3.71
+    # via comfyui-workflow-templates
+einops==0.8.2
+    # via
+    #   -r AI3D/image-requirements.in
+    #   spandrel
+filelock==4.2.4
+    # via
+    #   -r AI3D/image-requirements.in
+    #   huggingface-hub
+    #   torch
+    #   transformers
+frozenlist==1.8.0
+    # via
+    #   aiohttp
+    #   aiosignal
+fsspec==2026.9.0
+    # via
+    #   huggingface-hub
+    #   torch
+glfw==2.11.0
+    # via -r AI3D/image-requirements.in
+h11==0.16.0
+    # via httpcore
+hf-xet==1.7.0
+    # via huggingface-hub
+httpcore==1.0.9
+    # via httpx
+httpx==0.28.1
+    # via huggingface-hub
+huggingface-hub==1.3.5
+    # via
+    #   -r AI3D/image-requirements.in
+    #   tokenizers
+    #   transformers
+idna==3.20
+    # via
+    #   anyio
+    #   httpx
+    #   requests
+    #   yarl
+jinja2==3.1.6
+    # via torch
+kornia==0.8.3
+    # via -r AI3D/image-requirements.in
+kornia-rs==0.2.0
+    # via kornia
+mako==1.4.3
+    # via alembic
+markdown-it-py==4.2.0
+    # via rich
+markupsafe==3.0.4
+    # via
+    #   jinja2
+    #   mako
+mdurl==0.1.2
+    # via markdown-it-py
+mpmath==1.3.0
+    # via sympy
+multidict==7.1.0
+    # via
+    #   aiohttp
+    #   yarl
+networkx==3.7
+    # via torch
+numpy==2.4.1
+    # via
+    #   -r AI3D/image-requirements.in
+    #   scipy
+    #   spandrel
+    #   torchsde
+    #   torchvision
+    #   transformers
+packaging==26.3
+    # via
+    #   huggingface-hub
+    #   kornia
+    #   transformers
+pillow==12.1.0
+    # via
+    #   -r AI3D/image-requirements.in
+    #   torchvision
+propcache==0.5.4
+    # via
+    #   aiohttp
+    #   yarl
+psutil==7.2.2
+    # via -r AI3D/image-requirements.in
+pydantic==2.14.1
+    # via
+    #   -r AI3D/image-requirements.in
+    #   pydantic-settings
+pydantic-core==2.50.1
+    # via pydantic
+pydantic-settings==2.16.1
+    # via -r AI3D/image-requirements.in
+pygments==2.21.0
+    # via rich
+pyopengl==3.1.10
+    # via -r AI3D/image-requirements.in
+python-dotenv==1.2.4
+    # via pydantic-settings
+pyyaml==6.0.3
+    # via
+    #   -r AI3D/image-requirements.in
+    #   huggingface-hub
+    #   transformers
+regex==2026.9.29
+    # via transformers
+requests==2.34.2
+    # via -r AI3D/image-requirements.in
+rich==15.0.0
+    # via typer
+safetensors==0.7.0
+    # via
+    #   -r AI3D/image-requirements.in
+    #   spandrel
+    #   transformers
+scipy==1.17.0
+    # via
+    #   -r AI3D/image-requirements.in
+    #   torchsde
+sentencepiece==0.2.2
+    # via -r AI3D/image-requirements.in
+setuptools==84.2.0
+    # via torch
+shellingham==1.5.4
+    # via
+    #   huggingface-hub
+    #   typer
+simpleeval==1.0.8
+    # via -r AI3D/image-requirements.in
+spandrel==0.4.2
+    # via -r AI3D/image-requirements.in
+sqlalchemy==2.1.5
+    # via
+    #   -r AI3D/image-requirements.in
+    #   alembic
+sympy==1.14.0
+    # via torch
+tokenizers==0.22.2
+    # via
+    #   -r AI3D/image-requirements.in
+    #   transformers
+torch==2.10.0+cu130
+    # via
+    #   -r AI3D/image-requirements.in
+    #   kornia
+    #   spandrel
+    #   torchaudio
+    #   torchsde
+    #   torchvision
+torchaudio==2.10.0+cu130
+    # via -r AI3D/image-requirements.in
+torchsde==0.2.6
+    # via -r AI3D/image-requirements.in
+torchvision==0.25.0+cu130
+    # via
+    #   -r AI3D/image-requirements.in
+    #   spandrel
+tqdm==4.70.1
+    # via
+    #   -r AI3D/image-requirements.in
+    #   huggingface-hub
+    #   transformers
+trampoline==0.1.2
+    # via torchsde
+transformers==5.0.0
+    # via -r AI3D/image-requirements.in
+truststore==0.10.4
+    # via -r AI3D/image-requirements.in
+typer==0.27.3
+    # via typer-slim
+typer-slim==0.24.0
+    # via
+    #   huggingface-hub
+    #   transformers
+typing-extensions==4.16.0
+    # via
+    #   aiohttp
+    #   aiosignal
+    #   alembic
+    #   anyio
+    #   huggingface-hub
+    #   pydantic
+    #   pydantic-core
+    #   pydantic-settings
+    #   spandrel
+    #   sqlalchemy
+    #   torch
+    #   typing-inspection
+typing-inspection==0.4.4
+    # via
+    #   pydantic
+    #   pydantic-settings
+urllib3==2.8.0
+    # via requests
+yarl==1.25.1
+    # via
+    #   -r AI3D/image-requirements.in
+    #   aiohttp

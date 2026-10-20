@@ -20,7 +20,7 @@
       "prompt_support": "English source requirements and unchanged shared style",
       "license": {
         "id": "CreativeML Open RAIL-M",
-        "url": "https://huggingface.co/Lykon/dreamshaper-8",
+        "url": "https://huggingface.co/Lykon/DreamShaper",
         "commercial": "Model card license with use restrictions; verify downstream obligations"
       },
       "id": "dreamshaper8",
@@ -36,10 +36,11 @@
       "files": [
         {
           "path": "AI3D/Models/checkpoints/dreamshaper_8.safetensors",
-          "repository": "Lykon/dreamshaper-8",
+          "repository": "Lykon/DreamShaper",
           "revision": "228d79cb20811466f5c5710aa91f05dabd0b8a14",
           "sha256": "879db523c30d3b9017143d56705015e15a2cb5628762c11d086fed9538abd7fd",
-          "size": 2132625894
+          "size": 2132625894,
+          "remote_file": "DreamShaper_8_pruned.safetensors"
         }
       ]
     },

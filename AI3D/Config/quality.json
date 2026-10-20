@@ -16,7 +16,7 @@
     "allow_automatic_visual_approval": false,
     "model_digests": {
       "gemma3:4b": "68ceab7e468a31c988b44d5a4984a0e21f58c4f7158c6ce29c1804babac38df7",
-      "qwen3.6:27b": "a50eda8ed977ab48a12431878896b27ffd5cef552c17af3317d9623b939a7f1e"
+      "qwen3.6:27b": "bcbdbd4bcf86f2c4a56cd1698fb31f9434f7dd99752f71b636c750aaa67a49a5"
     }
   },
   "model_profiles": {

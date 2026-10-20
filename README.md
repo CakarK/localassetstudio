@@ -55,30 +55,31 @@ Ordinary references require human selection. Revision/rejection notes explicitly
 
 GPU work is serialized. Shape, image generation, paint and VLM models are not intended to remain resident simultaneously. Model weights and Python/ComfyUI environments are large and are **not included** in this repository.
 
-The modern image runtime is separate from the pinned Hunyuan runtime. Its existing development environment uses PyTorch 2.10.0 + CUDA 13.0; do not install its requirements into the Hunyuan environment. See the installation guide for the external runtime paths and model-file configuration.
+The modern image runtime is separate from the pinned Hunyuan runtime. The installer prepares ComfyUI v0.18.5 with PyTorch 2.10.0 + CUDA 13.0 in its own environment; do not install its requirements into the Hunyuan environment.
 
 ## Getting started
 
-This is a source release of a working local installation, **not a portable executable or a one-click installer**. You need to install the external runtimes, obtain model weights under their respective licenses, and configure paths. A clean-machine GPU installation has not been certified.
+On **Windows 11 x64**, open PowerShell and run this single command. Git and Python do not need to be installed first:
 
 ```powershell
-git clone https://github.com/CakarK/localassetstudio.git
-cd localassetstudio
-
-# Inspect docs/INSTALLATION.md and sources.lock.json before running setup.
-# Downloads large Hunyuan/DINO model files and installs the isolated core environment.
-.\AI3D\Scripts\setup.ps1 -Python312 3.12.11
+powershell -NoProfile -ExecutionPolicy Bypass -Command "irm https://raw.githubusercontent.com/CakarK/localassetstudio/main/install.ps1 | iex"
 ```
 
-Configure the image-provider model paths in `AI3D/Config/image_providers.json`, prepare the separate image ComfyUI runtime, and install the local Ollama models described in the installation guide. The local VLM tag and digest must match your installation; an existing custom tag is not assumed to be downloadable from the Ollama library.
+The bootstrap downloads this repository into `%LOCALAPPDATA%\LocalAssetStudio`. The full installer prepares portable Git/uv/Blender/Ollama, Python 3.12.11, separate Hunyuan and image ComfyUI environments, all three supported image providers, Hunyuan/DINO/U2Net weights, and the two Ollama models. It records local paths, checks CUDA/extensions/Blender, starts the services and opens the studio. **No asset or model inference is submitted by setup.**
 
-Once dependencies and weights are ready, run these from the project root:
+Expect approximately **93 GB of model downloads**, plus runtime/package downloads; reserve **180 GiB free disk** for a fresh full install. A suitable NVIDIA driver and **24 GB VRAM** are prerequisites. Upstream model/runtime licenses apply: review [the notices](THIRD_PARTY_NOTICES.md). Network, disk and model-access failures stop with a log; rerun the same command to resume verified files. Existing incompatible source/model versions are preserved and reported rather than replaced.
+
+Already cloned the repository? Use:
 
 ```powershell
-.\Start-AI3D.ps1 -NoBrowser
-.\Start-ImageProviders.ps1 -NoBrowser
-.\Start-AssetStudio.ps1 -NoBrowser
+powershell -NoProfile -ExecutionPolicy Bypass -File .\Install-LocalAssetStudio.ps1
+# Show the download/installation plan without changing anything:
+powershell -NoProfile -ExecutionPolicy Bypass -File .\Install-LocalAssetStudio.ps1 -Plan
 ```
+
+On later launches, use `Start-LocalAssetStudio.ps1` to start all services together. See [installation and recovery](docs/INSTALLATION.md) for a custom drive, service conflicts and no-start mode.
+
+**Verification boundary:** installer resume/hash/preservation tests, Windows PowerShell checks and dependency resolution are validated. A complete fresh-machine GPU installation and end-to-end inference with every newly pinned public component have not been certified. Setup performs real smoke checks on the destination machine and only reports success if they pass.
 
 | Service / page | Default address |
 |---|---|
@@ -118,7 +119,7 @@ Run the existing tests with an environment containing the locked Python dependen
 .\AI3D\.venv\Scripts\python.exe -m unittest discover -s tests -v
 ```
 
-Source-release verification: **290 tests passed, 9 optional installation/evidence checks skipped** (299 discovered). No private evidence files or external runtime source are bundled.
+Source-release verification is recorded in [installation validation](docs/INSTALLATION_VALIDATION.md). No private evidence files or external runtime source are bundled.
 
 Tests use isolated fixtures and mocked inference; passing them does not prove that your GPU models, Blender or ComfyUI installation are configured. Do not run integration tests that acquire the global production lock while real production is active. See [CONTRIBUTING.md](CONTRIBUTING.md).
 
