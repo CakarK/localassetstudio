@@ -118,7 +118,7 @@ Run the existing tests with an environment containing the locked Python dependen
 .\AI3D\.venv\Scripts\python.exe -m unittest discover -s tests -v
 ```
 
-Source-release verification: **287 tests passed, 9 optional installation/evidence checks skipped** (296 discovered). No private evidence files or external runtime source are bundled.
+Source-release verification: **290 tests passed, 9 optional installation/evidence checks skipped** (299 discovered). No private evidence files or external runtime source are bundled.
 
 Tests use isolated fixtures and mocked inference; passing them does not prove that your GPU models, Blender or ComfyUI installation are configured. Do not run integration tests that acquire the global production lock while real production is active. See [CONTRIBUTING.md](CONTRIBUTING.md).
 
