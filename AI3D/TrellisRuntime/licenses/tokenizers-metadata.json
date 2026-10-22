@@ -1,0 +1,43 @@
+{
+  "info": {
+    "name": "tokenizers",
+    "version": "0.22.2",
+    "license": null,
+    "license_expression": null,
+    "license_files": null,
+    "classifiers": [
+      "Development Status :: 5 - Production/Stable",
+      "Intended Audience :: Developers",
+      "Intended Audience :: Education",
+      "Intended Audience :: Science/Research",
+      "License :: OSI Approved :: Apache Software License",
+      "Operating System :: OS Independent",
+      "Programming Language :: Python :: 3",
+      "Programming Language :: Python :: 3 :: Only",
+      "Programming Language :: Python :: 3.10",
+      "Programming Language :: Python :: 3.11",
+      "Programming Language :: Python :: 3.12",
+      "Programming Language :: Python :: 3.13",
+      "Programming Language :: Python :: 3.9",
+      "Topic :: Scientific/Engineering :: Artificial Intelligence"
+    ],
+    "project_urls": {
+      "Homepage": "https://github.com/huggingface/tokenizers",
+      "Source": "https://github.com/huggingface/tokenizers"
+    },
+    "requires_dist": [
+      "huggingface-hub<2.0,>=0.16.4",
+      "pytest; extra == \"testing\"",
+      "pytest-asyncio; extra == \"testing\"",
+      "requests; extra == \"testing\"",
+      "numpy; extra == \"testing\"",
+      "datasets; extra == \"testing\"",
+      "ruff; extra == \"testing\"",
+      "ty; extra == \"testing\"",
+      "sphinx; extra == \"docs\"",
+      "sphinx-rtd-theme; extra == \"docs\"",
+      "setuptools-rust; extra == \"docs\"",
+      "tokenizers[testing]; extra == \"dev\""
+    ]
+  }
+}

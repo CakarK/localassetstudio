@@ -1,0 +1,41 @@
+{
+  "info": {
+    "name": "triton-windows",
+    "version": "3.6.0.post26",
+    "license": null,
+    "license_expression": null,
+    "license_files": [
+      "LICENSE"
+    ],
+    "classifiers": [
+      "Development Status :: 4 - Beta",
+      "Intended Audience :: Developers",
+      "License :: OSI Approved :: MIT License",
+      "Programming Language :: Python :: 3.10",
+      "Programming Language :: Python :: 3.11",
+      "Programming Language :: Python :: 3.12",
+      "Programming Language :: Python :: 3.13",
+      "Programming Language :: Python :: 3.14",
+      "Topic :: Software Development :: Build Tools"
+    ],
+    "project_urls": {
+      "Homepage": "https://github.com/woct0rdho/triton-windows"
+    },
+    "requires_dist": [
+      "importlib-metadata; python_version < \"3.10\"",
+      "cmake<4.0,>=3.20; extra == \"build\"",
+      "lit; extra == \"build\"",
+      "autopep8; extra == \"tests\"",
+      "isort; extra == \"tests\"",
+      "numpy; extra == \"tests\"",
+      "pytest; extra == \"tests\"",
+      "pytest-forked; extra == \"tests\"",
+      "pytest-xdist; extra == \"tests\"",
+      "scipy>=1.7.1; extra == \"tests\"",
+      "llnl-hatchet; extra == \"tests\"",
+      "matplotlib; extra == \"tutorials\"",
+      "pandas; extra == \"tutorials\"",
+      "tabulate; extra == \"tutorials\""
+    ]
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "info": {
+    "name": "opencv-python-headless",
+    "version": "4.11.0.86",
+    "license": "Apache 2.0",
+    "license_expression": null,
+    "license_files": null,
+    "classifiers": [
+      "Development Status :: 5 - Production/Stable",
+      "Environment :: Console",
+      "Intended Audience :: Developers",
+      "Intended Audience :: Education",
+      "Intended Audience :: Information Technology",
+      "Intended Audience :: Science/Research",
+      "License :: OSI Approved :: Apache Software License",
+      "Operating System :: MacOS",
+      "Operating System :: Microsoft :: Windows",
+      "Operating System :: POSIX",
+      "Operating System :: Unix",
+      "Programming Language :: C++",
+      "Programming Language :: Python",
+      "Programming Language :: Python :: 3",
+      "Programming Language :: Python :: 3 :: Only",
+      "Programming Language :: Python :: 3.10",
+      "Programming Language :: Python :: 3.11",
+      "Programming Language :: Python :: 3.12",
+      "Programming Language :: Python :: 3.13",
+      "Programming Language :: Python :: 3.6",
+      "Programming Language :: Python :: 3.7",
+      "Programming Language :: Python :: 3.8",
+      "Programming Language :: Python :: 3.9",
+      "Programming Language :: Python :: Implementation :: CPython",
+      "Topic :: Scientific/Engineering",
+      "Topic :: Scientific/Engineering :: Image Recognition",
+      "Topic :: Software Development"
+    ],
+    "project_urls": {
+      "Homepage": "https://github.com/opencv/opencv-python"
+    },
+    "requires_dist": [
+      "numpy>=1.13.3; python_version < \"3.7\"",
+      "numpy>=1.21.0; python_version <= \"3.9\" and platform_system == \"Darwin\" and platform_machine == \"arm64\"",
+      "numpy>=1.21.2; python_version >= \"3.10\"",
+      "numpy>=1.21.4; python_version >= \"3.10\" and platform_system == \"Darwin\"",
+      "numpy>=1.23.5; python_version >= \"3.11\"",
+      "numpy>=1.26.0; python_version >= \"3.12\"",
+      "numpy>=1.19.3; python_version >= \"3.6\" and platform_system == \"Linux\" and platform_machine == \"aarch64\"",
+      "numpy>=1.17.0; python_version >= \"3.7\"",
+      "numpy>=1.17.3; python_version >= \"3.8\"",
+      "numpy>=1.19.3; python_version >= \"3.9\""
+    ]
+  }
+}

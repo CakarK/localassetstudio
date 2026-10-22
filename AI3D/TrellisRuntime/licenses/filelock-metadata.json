@@ -1,0 +1,34 @@
+{
+  "info": {
+    "name": "filelock",
+    "version": "3.20.0",
+    "license": null,
+    "license_expression": "Unlicense",
+    "license_files": [
+      "LICENSE"
+    ],
+    "classifiers": [
+      "Development Status :: 5 - Production/Stable",
+      "Intended Audience :: Developers",
+      "License :: OSI Approved :: The Unlicense (Unlicense)",
+      "Operating System :: OS Independent",
+      "Programming Language :: Python",
+      "Programming Language :: Python :: 3 :: Only",
+      "Programming Language :: Python :: 3.10",
+      "Programming Language :: Python :: 3.11",
+      "Programming Language :: Python :: 3.12",
+      "Programming Language :: Python :: 3.13",
+      "Programming Language :: Python :: 3.14",
+      "Topic :: Internet",
+      "Topic :: Software Development :: Libraries",
+      "Topic :: System"
+    ],
+    "project_urls": {
+      "Documentation": "https://py-filelock.readthedocs.io",
+      "Homepage": "https://github.com/tox-dev/py-filelock",
+      "Source": "https://github.com/tox-dev/py-filelock",
+      "Tracker": "https://github.com/tox-dev/py-filelock/issues"
+    },
+    "requires_dist": null
+  }
+}

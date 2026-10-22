@@ -1,0 +1,66 @@
+{
+  "upstream_revisions": {
+    "microsoft/TRELLIS.2": "75fbf0183001ed9876c8dbb35de6b68552ee08bd",
+    "JeffreyXiang/CuMesh": "12289e1062f0603f2f0d0771b02e1395d247f26f",
+    "JeffreyXiang/FlexGEMM": "6dd94a859c26ee8246888502eada3dd8ad85532e",
+    "JeffreyXiang/cubvh": "ce92267a24ef6ad7d2c8ccbc2ae2c021a6597e70"
+  },
+  "patches": [
+    {
+      "path": "src/TRELLIS.2/o-voxel/o_voxel/__init__.py",
+      "before_sha256": "ca30e1545d11f3e862b7d11b31af6200427c91482f11d8b543982d692cd8588b",
+      "after_sha256": "4b4df4ca46af4849e4d869940054c11bb05e894d5f16e4a19ec454f3299b4e92"
+    },
+    {
+      "path": "src/TRELLIS.2/o-voxel/o_voxel/postprocess.py",
+      "before_sha256": "ef51a1ba0f2748ffb4c265b47d382cee956f23c6a52d0f3587e6d8beccb7e54a",
+      "after_sha256": "e11adc61210a412e636ab88b2232101d7e5f6ce4b86b566e3b9a98016dd893e9"
+    },
+    {
+      "path": "src/TRELLIS.2/o-voxel/o_voxel/postprocess.py",
+      "before_sha256": "44252b317a217d78fb8c5c89df4b8d535f6137987e628640f90dfd68bec6925d",
+      "after_sha256": "347be9638a99556e4cb8247fc24a7b49ef1f1454cd39b7f310c55f3e05d2b287"
+    },
+    {
+      "path": "src/TRELLIS.2/trellis2/modules/sparse/config.py",
+      "before_sha256": "6a9cb44608829cb2c11591685282959928c6081c5bc659687aa8395765c5f91b",
+      "after_sha256": "c06777b1b336390eceb31314c11695e48d801aaa9de11a936c6eaef19d3cf8b8"
+    },
+    {
+      "path": "src/TRELLIS.2/trellis2/modules/sparse/attention/full_attn.py",
+      "before_sha256": "bee0c32089f060c8136292f41a2cc7a952a8679a8b6d113d14c772f2c681e520",
+      "after_sha256": "fd04a80072fa5676cdd0bc75906fce18fbd47ecefd483f097df3171307b2ee35"
+    },
+    {
+      "path": "src/TRELLIS.2/trellis2/pipelines/trellis2_image_to_3d.py",
+      "before_sha256": "e2addfca672354284b23d1541a8f49228d5a727d49220fcb8512cca2cdd38ce9",
+      "after_sha256": "b2250ca266f392f80318a6ac9002ba4727a1c5a7db947a4f0667a739561a57b0"
+    },
+    {
+      "path": "src/TRELLIS.2/trellis2/pipelines/trellis2_image_to_3d.py",
+      "before_sha256": "6a84d7396c186f46c1bde762ddabf52648843eb4890c8b71ce711b0f2f8eea6a",
+      "after_sha256": "8b5cff9e9ab1da711b578e3965711f9191609d32acf6f5b786c8c3eb297c5081"
+    },
+    {
+      "path": "src/TRELLIS.2/o-voxel/setup.py",
+      "before_sha256": "7f4d509f1d17dacd8f6a5c867a1c78193b4aa58581c65699d172bc6b2f26326d",
+      "after_sha256": "b149a6b0fa84d2a045b1e07165046a39ee24860ff54256ef77f019528e8bdf52"
+    },
+    {
+      "path": "src/TRELLIS.2/o-voxel/setup.py",
+      "before_sha256": "8ef65bc75b57c1b961a2e23db0c074f5dcf74032a8fee36ad95a34f7119d4618",
+      "after_sha256": "04fba0095f34e416d175025ab733fa85f88f4180a7501ef24f51a71fde85ba57"
+    },
+    {
+      "path": "src/TRELLIS.2/o-voxel/setup.py",
+      "before_sha256": "b92f5e1bf9a864e90cd9978c6ea80e20900d6c3246249a50862a8867f310cefd",
+      "after_sha256": "6f923426cc5d6cbd818df66c67a95ccc8782caed9135150111c4911770bb3308"
+    },
+    {
+      "path": "src/FlexGEMM/setup.py",
+      "before_sha256": "9411c37c682d32417d5963b9dec3511ede1c89ef5c6014d54b1d73ea90028b6c",
+      "after_sha256": "e3a807e9d8ae40ae14c165704056defff499163788eae24b7fb8a6d0f687bcca",
+      "purpose": "Keep installer autotune cache in isolated workspace instead of user profile"
+    }
+  ]
+}

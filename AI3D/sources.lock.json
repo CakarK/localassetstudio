@@ -4,18 +4,6 @@
     "revision": "72212fef660bcd7d9702fa52011d089c027a64d8",
     "tag": "v0.3.59"
   },
-  "wrapper": {
-    "url": "https://github.com/visualbruno/ComfyUI-Hunyuan3d-2-1",
-    "revision": "a0b26fbb94c9a9d32720526c52e64f87e05d2b53"
-  },
-  "hunyuan": {
-    "repository": "tencent/Hunyuan3D-2.1",
-    "revision": "0b94677654c57bb9a6b6845cd7b704ccf551d327"
-  },
-  "dino": {
-    "repository": "facebook/dinov2-giant",
-    "revision": "611a9d42f2335e0f921f1e313ad3c1b7178d206d"
-  },
   "prompt": {
     "model": "qwen3:4b",
     "digest": "359d7dd4bcdab3d86b87d73ac27966f4dbb9f5efdfcc75d34a8764a09474fae7",
@@ -26,5 +14,10 @@
     "file": "AI3D/Models/checkpoints/dreamshaper_8.safetensors",
     "model_card": "https://huggingface.co/Lykon/dreamshaper-8",
     "reuse": "read-only; local fingerprint in Logs/model-fingerprints.json"
+  },
+  "geometry": {
+    "provider": "trellis2",
+    "repository": "microsoft/TRELLIS.2",
+    "revision": "75fbf0183001ed9876c8dbb35de6b68552ee08bd"
   }
 }

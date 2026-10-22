@@ -1,0 +1,31 @@
+{
+  "info": {
+    "name": "zstandard",
+    "version": "0.25.0",
+    "license": null,
+    "license_expression": "BSD-3-Clause",
+    "license_files": [
+      "LICENSE"
+    ],
+    "classifiers": [
+      "Development Status :: 5 - Production/Stable",
+      "Intended Audience :: Developers",
+      "Programming Language :: C",
+      "Programming Language :: Python :: 3.10",
+      "Programming Language :: Python :: 3.11",
+      "Programming Language :: Python :: 3.12",
+      "Programming Language :: Python :: 3.13",
+      "Programming Language :: Python :: 3.14",
+      "Programming Language :: Python :: 3.9",
+      "Programming Language :: Python :: Free Threading :: 1 - Unstable"
+    ],
+    "project_urls": {
+      "Documentation": "https://python-zstandard.readthedocs.io/en/latest/",
+      "Homepage": "https://github.com/indygreg/python-zstandard"
+    },
+    "requires_dist": [
+      "cffi~=1.17; (platform_python_implementation != \"PyPy\" and python_version < \"3.14\") and extra == \"cffi\"",
+      "cffi>=2.0.0b; (platform_python_implementation != \"PyPy\" and python_version >= \"3.14\") and extra == \"cffi\""
+    ]
+  }
+}

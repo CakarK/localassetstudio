@@ -1,12 +1,17 @@
-# Local Asset Studio
+# Local Asset Studio · v0.3.0
 
 **Local text-to-image-to-3D asset production, with a browser workbench and human approval.**
 
-Design a reference, choose what to build, run a persistent production queue, and review the resulting 3D model in your browser. Inference runs on your own machine through ComfyUI, Hunyuan3D and Ollama. Other computers on the same trusted LAN can use the web interface.
+Design a reference, choose what to build, run a persistent production queue, and review the resulting 3D model in your browser. Inference runs on your own machine through ComfyUI, TRELLIS.2 and Ollama. Other computers on the same trusted LAN can use the web interface.
 
 > **A CUDA-capable NVIDIA GPU with at least 24 GB of dedicated VRAM is required for the supported full pipeline.** The development machine uses an RTX 3090 24 GB on Windows 11. Lower-VRAM and CPU-only end-to-end production are not validated or supported configurations. The VLM step requires approximately 19,000 MiB of free VRAM; close other GPU-heavy applications.
 
 [Türkçe README](README.tr.md) · [Installation](docs/INSTALLATION.md) · [Usage](docs/USAGE.md) · [Architecture](docs/ARCHITECTURE.md) · [Third-party notices](THIRD_PARTY_NOTICES.md)
+
+
+**TRELLIS-only release:** Hunyuan generation and its installers have been removed. Existing Hunyuan job records are never silently converted; create a new TRELLIS job from a selected reference. No private game assets, prompts or catalogs are bundled.
+
+The included native wheels target **Windows x64, Python 3.12, PyTorch 2.10/CUDA 13.0 and sm_86 (RTX 3090)**. Other GPU architectures need a matching native build and are not certified by this release. DINOv3 requires a free Hugging Face account, accepted terms and approved access; setup cannot bypass this approval. [Migration and limitations](docs/TRELLIS_MIGRATION.md).
 
 ## What it does
 
@@ -25,7 +30,7 @@ flowchart LR
   A[Prompt / catalog] --> B[Reference image]
   B --> C[Human selects reference]
   C --> D[Persistent queue]
-  D --> E[Hunyuan shape]
+  D --> E[TRELLIS Shape]
   E --> F[Geometry check / optimization]
   F --> G[PBR / Blender / export]
   G --> H[Technical and visual reports]
@@ -46,16 +51,22 @@ Ordinary references require human selection. Revision/rejection notes explicitly
 | GPU | **NVIDIA RTX 3090, 24 GB VRAM — 24 GB minimum for the supported full workflow** |
 | System memory | Development host has approximately 48 GB RAM |
 | Core runtime | Python 3.12.11, PyTorch 2.6.0 + CUDA 12.6 |
-| Geometry / texture | Hunyuan3D 2.1 through a pinned ComfyUI integration |
+| Geometry / texture | TRELLIS.2 through an isolated PyTorch runtime |
 | Reference providers | Z-Image-Turbo BF16, Qwen-Image-2512 FP8, DreamShaper 8 |
 | Visual evaluation | Ollama; configured local tag `qwen3.6:27b` |
 | Prompt / revision translation | Local `qwen3:4b`, CPU-only |
-| Mesh processing | Blender 5.0.1, PyMeshLab, trimesh |
+| Mesh processing | Blender 5.2.2 LTS, PyMeshLab, trimesh |
 | Workbench / queue | Flask, SQLite, local Three.js viewer |
 
 GPU work is serialized. Shape, image generation, paint and VLM models are not intended to remain resident simultaneously. Model weights and Python/ComfyUI environments are large and are **not included** in this repository.
 
-The modern image runtime is separate from the pinned Hunyuan runtime. The installer prepares ComfyUI v0.18.5 with PyTorch 2.10.0 + CUDA 13.0 in its own environment; do not install its requirements into the Hunyuan environment.
+The image runtimes and isolated TRELLIS runtime use separate environments. The installer prepares ComfyUI v0.18.5 with PyTorch 2.10.0 + CUDA 13.0 in its own environment; do not install its requirements into the TRELLIS environment.
+
+## One-click setup
+
+Download [**Install-LocalAssetStudio.bat**](https://github.com/CakarK/localassetstudio/releases/download/v0.3.0/Install-LocalAssetStudio.bat) from the v0.3.0 GitHub release and double-click it. It downloads the versioned source and runs setup, then opens the studio. A downloaded source ZIP includes the same installer; double-click `Start-LocalAssetStudio.bat` afterwards to start, or to install if missing.
+
+The installer verifies free DINOv3 account access before large model downloads. If terms/login are needed, it opens the model page and prompts for local login; only you can accept the provider terms. Rerun the same BAT after approval. An older installation in the default destination is preserved and the new release uses a versioned sibling folder instead of running the old Hunyuan installer.
 
 ## Getting started
 
@@ -65,9 +76,9 @@ On **Windows 11 x64**, open PowerShell and run this single command. Git and Pyth
 powershell -NoProfile -ExecutionPolicy Bypass -Command "irm https://raw.githubusercontent.com/CakarK/localassetstudio/main/install.ps1 | iex"
 ```
 
-The bootstrap downloads this repository into `%LOCALAPPDATA%\LocalAssetStudio`. The full installer prepares portable Git/uv/Blender/Ollama, Python 3.12.11, separate Hunyuan and image ComfyUI environments, all three supported image providers, Hunyuan/DINO/U2Net weights, and the two Ollama models. It records local paths, checks CUDA/extensions/Blender, starts the services and opens the studio. **No asset or model inference is submitted by setup.**
+The bootstrap downloads this repository into `%LOCALAPPDATA%\LocalAssetStudio`. The full installer prepares portable Git/uv/Blender/Ollama, Python 3.12.11, separate core-image, modern-image and TRELLIS environments, all three supported image providers, TRELLIS/DINOv3/BiRefNet/U2Net weights, and the two Ollama models. It records local paths, checks CUDA/extensions/Blender, starts the services and opens the studio. **No asset or model inference is submitted by setup.**
 
-Expect approximately **93 GB of model downloads**, plus runtime/package downloads; reserve **180 GiB free disk** for a fresh full install. A suitable NVIDIA driver and **24 GB VRAM** are prerequisites. Upstream model/runtime licenses apply: review [the notices](THIRD_PARTY_NOTICES.md). Network, disk and model-access failures stop with a log; rerun the same command to resume verified files. Existing incompatible source/model versions are preserved and reported rather than replaced.
+Expect approximately **84.8 GB (79.0 GiB) of model downloads**, plus runtime/package downloads; reserve **120 GiB free disk** for a fresh full install. A suitable NVIDIA driver and **24 GB VRAM** are prerequisites. Upstream model/runtime licenses apply: review [the notices](THIRD_PARTY_NOTICES.md). Network, disk and model-access failures stop with a log; rerun the same command to resume verified files. Existing incompatible source/model versions are preserved and reported rather than replaced.
 
 Already cloned the repository? Use:
 
@@ -86,7 +97,7 @@ On later launches, use `Start-LocalAssetStudio.ps1` to start all services togeth
 | Asset workbench | http://localhost:8088/ |
 | Live production queue | http://localhost:8088/queue |
 | 3D model review | http://localhost:8088/reviews |
-| Hunyuan ComfyUI | http://127.0.0.1:8190 |
+| Classic image ComfyUI | http://127.0.0.1:8190 |
 | Image ComfyUI | http://127.0.0.1:8191 |
 | Ollama | http://127.0.0.1:11434 |
 

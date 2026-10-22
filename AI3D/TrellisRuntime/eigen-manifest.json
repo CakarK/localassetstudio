@@ -1,0 +1,14 @@
+[
+  {
+    "revision": "21e4582d1739107337a03460c81412981130373e",
+    "url": "https://gitlab.com/libeigen/eigen/-/archive/21e4582d1739107337a03460c81412981130373e/eigen-21e4582d1739107337a03460c81412981130373e.tar.gz",
+    "archive_sha256": "399bbf2c2239b286f21edfebfe1430a689c0995acd32e8017701346f6d35be7a",
+    "bytes": 3025643
+  },
+  {
+    "revision": "e63d9f6ccb7f6f29f31241b87c542f3f0ab3112b",
+    "url": "https://gitlab.com/libeigen/eigen/-/archive/e63d9f6ccb7f6f29f31241b87c542f3f0ab3112b/eigen-e63d9f6ccb7f6f29f31241b87c542f3f0ab3112b.tar.gz",
+    "archive_sha256": "4474797c3b711dc23d010c25f6fb448715920ddf2fb6b3d8fff89f2cf4ab4911",
+    "bytes": 2862859
+  }
+]

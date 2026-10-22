@@ -1,4 +1,4 @@
-# Local Asset Studio
+# Local Asset Studio · v0.3.0
 
 Yerel GPU üzerinde çalışan; prompt'tan referans görsel, 3D model, PBR ve Blender teslim paketi üreten web arayüzü.
 
@@ -10,7 +10,7 @@ Yerel GPU üzerinde çalışan; prompt'tan referans görsel, 3D model, PBR ve Bl
 - Referansı inceleme, prompt'u değiştirerek yeni görsel hazırlama ve seçilenleri 3D sırasına alma.
 - Çalışan varlığı, gerçek aşamayı, ölçülen süreyi, bekleyen revizyonları ve hata nedenlerini aynı sırada görme.
 - Bekleyen işleri taşıma/çıkarma, duraklatma ve devam ettirme.
-- Hunyuan3D 2.1, poligon optimizasyonu, PBR, Blender ve teknik/görsel raporlar.
+- TRELLIS.2, poligon optimizasyonu, PBR, Blender ve teknik/görsel raporlar.
 - Tarayıcıda 3D inceleme; onay, revizyon veya ret. Teknik puan ya da ham model durumu insan onayını engellemez; gerçek teknik eksikler ayrıca korunur.
 - Revizyon notlarından yeni aday üretimi; eski model korunur ve aynı karar için sınırsız otomatik retry yapılmaz.
 - Aynı güvenilir yerel ağdaki diğer bilgisayarlardan erişim.
@@ -21,9 +21,9 @@ Windows 11 x64 üzerinde PowerShell açıp **tek komut** çalıştırın. Git ve
 powershell -NoProfile -ExecutionPolicy Bypass -Command "irm https://raw.githubusercontent.com/CakarK/localassetstudio/main/install.ps1 | iex"
 ```
 
-Kurucu `%LOCALAPPDATA%\LocalAssetStudio` altına projeyi indirir; taşınabilir Git/uv/Blender/Ollama, Python 3.12.11, ayrı Hunyuan ve görsel ComfyUI ortamları, üç görsel üretici, Hunyuan/DINO/U2Net ve Ollama modellerini hazırlar. CUDA/eklenti/Blender kontrollerinden sonra servisleri başlatıp arayüzü açar. **Kurulum asset üretimi veya AI inference başlatmaz.**
+Kurucu `%LOCALAPPDATA%\LocalAssetStudio` altına projeyi indirir; taşınabilir Git/uv/Blender/Ollama, Python 3.12.11, ayrı TRELLIS ve görsel ComfyUI ortamları, üç görsel üretici, TRELLIS/DINOv3/U2Net ve Ollama modellerini hazırlar. CUDA/eklenti/Blender kontrollerinden sonra servisleri başlatıp arayüzü açar. **Kurulum asset üretimi veya AI inference başlatmaz.**
 
-Yaklaşık **93 GB model indirmesi**, ayrıca paket ve çalışma ortamı indirmeleri vardır. Temiz kurulum için **180 GiB boş alan**, uygun NVIDIA sürücüsü ve **24 GB VRAM** gerekir. Bağlantı kesilirse aynı komutla devam edebilirsiniz. Eski model ve kaynak sürümleri uyumsuzsa üzerine yazılmaz. [Bileşen lisansları](THIRD_PARTY_NOTICES.md) geçerlidir.
+Yaklaşık **84,8 GB model indirmesi**, ayrıca paket ve çalışma ortamı indirmeleri vardır. Temiz kurulum için **120 GiB boş alan**, uygun NVIDIA sürücüsü ve **24 GB VRAM** gerekir. Bağlantı kesilirse aynı komutla devam edebilirsiniz. Eski model ve kaynak sürümleri uyumsuzsa üzerine yazılmaz. [Bileşen lisansları](THIRD_PARTY_NOTICES.md) geçerlidir.
 
 Projeyi zaten klonladıysanız:
 
@@ -44,3 +44,13 @@ GLB/FBX/OBJ/Blend, mevcut PBR haritaları, LOD, önizlemeler ve raporlar yalnız
 Projenin özgün kodu MIT lisanslıdır. AI modellerinin, ComfyUI, Blender ve diğer bileşenlerin kendi lisansları ayrıca geçerlidir. [Lisans ve bağımlılık notları](THIRD_PARTY_NOTICES.md).
 
 Bu genel dağıtım oyun kataloğu, özel oyun promptu, karakter listesi, dönem sistemi veya sabit oyun grid ölçüsü içermez. Katalog boş gelir; arayüz sıfırdan prompt moduyla açılır. Görsel stilinizi ve negatif promptunuzu kendiniz girebilirsiniz. `LAS_CATALOG_PATH` ile kendi JSON kataloğunuzu seçebilirsiniz.
+
+
+## v0.3.0 — yalnız TRELLIS
+
+Hunyuan üretimi ve kurulum bağımlılıkları kaldırıldı. Yeni işler TRELLIS.2 kullanır; eski Hunyuan işlerinin kaynak bilgisi değiştirilmez. **24 GB VRAM gereklidir.** Paketlenen native wheel'ler Windows x64 / Python 3.12 / PyTorch 2.10 CUDA 13.0 / sm_86 (RTX 3090) içindir. Farklı GPU mimarileri için uygun native derleme gerekir. DINOv3 için ücretsiz Hugging Face hesabıyla koşulların kabulü ve erişim onayı gerekir; kurulum bunu atlamaz. Yeni sürümün sıfırdan GPU kurulumu henüz sertifikalı değildir. Ayrıntılar: [Geçiş rehberi](docs/TRELLIS_MIGRATION.md).
+
+
+## Çift tık kurulum
+
+v0.3.0 sürümünden [Install-LocalAssetStudio.bat](https://github.com/CakarK/localassetstudio/releases/download/v0.3.0/Install-LocalAssetStudio.bat) dosyasını indirip çift tıklayın. Kaynakları ve ortamları kurar, kontrollerden sonra arayüzü açar. Sonraki açılışlarda kaynak klasöründeki `Start-LocalAssetStudio.bat` kullanılır. DINOv3 için gerekiyorsa ücretsiz hesap/koşul sayfası açılır ve yerel giriş istenir; onay bekliyorsa aynı BAT ile devam edilir. Önceki kurulumun verileri üzerine yazılmaz.

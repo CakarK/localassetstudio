@@ -9,7 +9,6 @@ def add_parser(sub):
     p.add_parser('compare').add_argument('--asset',required=True)
     p.add_parser('recommend').add_argument('--category',required=True)
     p.add_parser('optimized')
-    p.add_parser('hunyuan-test')
 
 
 def execute(args,db):

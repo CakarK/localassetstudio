@@ -248,37 +248,22 @@ class ManagerTests(unittest.TestCase):
         with self.assertRaises(ProductionError):w.execute_stage('ReferenceApproved',a,self.asset,settings)
         settings['reference_approved']=True
         self.assertTrue(w.execute_stage('ReferenceApproved',a,self.asset,settings)['approval'].exists())
-    @unittest.skipUnless((AI/'Backups/phase_1_2/preserved-files.json').is_file(), 'Optional local installation/evidence artifact is not distributed with source')
-    def test_old_outputs_preserved(self):
-        baseline=json.loads((AI/'Backups/phase_1_2/preserved-files.json').read_text('utf-8'))
-        records=baseline if isinstance(baseline,list) else baseline.get('files',baseline)
-        if isinstance(records,dict):records=[{'path':path,**info} for path,info in records.items()]
-        for info in records:self.assertTrue(intact(info),info['path'])
-    @unittest.skipUnless((AI/'ComfyUI/custom_nodes/ComfyUI-Hunyuan3d-2-1/hy3dshape/hy3dshape/postprocessors.py').is_file(), 'Optional local installation/evidence artifact is not distributed with source')
-    def test_vendor_cleanup_preserves_uv_material(self):
-        path=AI/'ComfyUI/custom_nodes/ComfyUI-Hunyuan3d-2-1/hy3dshape/hy3dshape/postprocessors.py'
-        cls=next(n for n in ast.parse(path.read_text('utf-8')).body if isinstance(n,ast.ClassDef) and n.name=='DegenerateFaceRemover')
-        namespace={'synchronize_timer':lambda name:lambda fn:fn}
-        exec(compile(ast.Module(body=[cls],type_ignores=[]),str(path),'exec'),namespace)
-        mesh=trimesh.creation.box();mesh.faces=np.vstack([mesh.faces,[0,0,0]])
-        uv=np.column_stack([np.linspace(0,1,len(mesh.vertices))]*2)
-        mesh.visual=trimesh.visual.TextureVisuals(uv=uv,material=trimesh.visual.material.PBRMaterial(name='preserved'))
-        clean=namespace['DegenerateFaceRemover']()(mesh)
-        self.assertEqual(len(clean.faces),12);self.assertEqual(clean.visual.material.name,'preserved');np.testing.assert_array_equal(clean.visual.uv,uv)
-    @unittest.skipUnless((AI/'ComfyUI/custom_nodes/ComfyUI-Hunyuan3d-2-1/hy3dpaint/convert_utils.py').is_file(), 'Optional local installation/evidence artifact is not distributed with source')
-    def test_pbr_converter_isolated_temporaries(self):
-        from concurrent.futures import ThreadPoolExecutor
-        path=AI/'ComfyUI/custom_nodes/ComfyUI-Hunyuan3d-2-1/hy3dpaint/convert_utils.py'
-        spec=importlib.util.spec_from_file_location('test_converter',path);module=importlib.util.module_from_spec(spec);spec.loader.exec_module(module)
-        mesh=trimesh.creation.box();mesh.visual=trimesh.visual.TextureVisuals(uv=np.zeros((len(mesh.vertices),2)))
-        obj=self.root/'box.obj';mesh.export(obj)
-        for name in ('albedo','metallic','roughness'):Image.new('RGB',(32,32),'gray').save(self.root/(name+'.png'))
-        def convert(n):
-            out=self.root/f'model{n}.glb'
-            module.create_glb_with_pbr_materials(str(obj),{k:str(self.root/(k+'.png')) for k in ('albedo','metallic','roughness')},str(out))
-            loaded=trimesh.load(out,force='mesh');self.assertEqual(len(loaded.faces),12)
-        with ThreadPoolExecutor(max_workers=2) as pool:list(pool.map(convert,range(2)))
-        self.assertFalse(list(self.root.glob('g3dc_pbr_*')));self.assertFalse((self.root/'temp.glb').exists())
+    def test_removed_provider_cannot_run_old_job(self):
+        j=self.job();settings=json.loads(j['settings_json']);settings.pop('geometry_provider')
+        self.db.db.execute('UPDATE GenerationJobs SET settings_json=? WHERE id=?',(canonical(settings),j['id']));self.db.db.commit()
+        worker=FakeWorker(self.db);result=worker.run(j['id'])
+        self.assertEqual(worker.calls,[]);self.assertEqual(result['status'],'Failed')
+        self.assertEqual(json.loads(result['error_json'])['category'],'ProviderRemoved')
+    def test_removed_mesh_graph_is_not_available(self):
+        with self.assertRaises(ProductionError) as error:graphs('GeometryGenerated','GM_a',settings_for(self.asset),image_name='a.png')
+        self.assertEqual(error.exception.category,'ProviderRemoved')
+        self.assertFalse((AI/'ComfyUI/custom_nodes/ComfyUI-Hunyuan3d-2-1').exists())
+    def test_removed_pbr_graph_is_not_available(self):
+        with self.assertRaises(ProductionError) as error:graphs('PBRGenerated','GM_a',settings_for(self.asset),image_name='a.png')
+        self.assertEqual(error.exception.category,'ProviderRemoved')
+        from ai3d_manager.geometry_providers import provider
+        with self.assertRaises(ProductionError):provider({'geometry_provider':'hunyuan3d-2.1'})
+        self.assertEqual(provider({}),'trellis2')
 
 
 if __name__=='__main__':

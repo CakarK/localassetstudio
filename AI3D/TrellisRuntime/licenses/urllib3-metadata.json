@@ -1,0 +1,44 @@
+{
+  "info": {
+    "name": "urllib3",
+    "version": "2.8.0",
+    "license": null,
+    "license_expression": "MIT",
+    "license_files": [
+      "LICENSE.txt"
+    ],
+    "classifiers": [
+      "Environment :: Web Environment",
+      "Intended Audience :: Developers",
+      "Operating System :: OS Independent",
+      "Programming Language :: Python",
+      "Programming Language :: Python :: 3",
+      "Programming Language :: Python :: 3 :: Only",
+      "Programming Language :: Python :: 3.10",
+      "Programming Language :: Python :: 3.11",
+      "Programming Language :: Python :: 3.12",
+      "Programming Language :: Python :: 3.13",
+      "Programming Language :: Python :: 3.14",
+      "Programming Language :: Python :: 3.15",
+      "Programming Language :: Python :: Free Threading :: 2 - Beta",
+      "Programming Language :: Python :: Implementation :: CPython",
+      "Programming Language :: Python :: Implementation :: PyPy",
+      "Topic :: Internet :: WWW/HTTP",
+      "Topic :: Software Development :: Libraries"
+    ],
+    "project_urls": {
+      "Changelog": "https://github.com/urllib3/urllib3/blob/main/CHANGES.rst",
+      "Code": "https://github.com/urllib3/urllib3",
+      "Documentation": "https://urllib3.readthedocs.io",
+      "Issue tracker": "https://github.com/urllib3/urllib3/issues",
+      "Security policy": "https://urllib3.readthedocs.io/en/latest/security.html"
+    },
+    "requires_dist": [
+      "brotli>=1.2.0; platform_python_implementation == \"CPython\" and extra == \"brotli\"",
+      "brotlicffi>=1.2.0.0; platform_python_implementation != \"CPython\" and extra == \"brotli\"",
+      "h2<5,>=4; extra == \"h2\"",
+      "pysocks!=1.5.7,<2.0,>=1.5.6; extra == \"socks\"",
+      "backports-zstd>=1.0.0; python_version < \"3.14\" and extra == \"zstd\""
+    ]
+  }
+}

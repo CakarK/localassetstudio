@@ -54,3 +54,6 @@ AI3D/Private/
 AI3D/Library/
 AI3D/Prompts/*
 !AI3D/Prompts/catalog.example.json
+
+# Audited native Windows wheels are deliberate release artifacts
+!AI3D/TrellisRuntime/wheels/*.whl

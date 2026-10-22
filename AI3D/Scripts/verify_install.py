@@ -42,7 +42,7 @@ def services():
             raise RuntimeError(f'Port {port} belongs to a different installation')
         nodes = api(f'http://127.0.0.1:{port}/object_info')
         if port == 8190:
-            required = ['Hy3D21MeshGenerator', 'Hy3D21VAELoader', 'Hy3D21VAEDecode', 'G3DCManagedSaveMesh', 'G3DCManagedLoadMesh', 'LocalAssetStudioPBR', 'LocalAssetStudioImageCheckpoint']
+            required = ['CheckpointLoaderSimple','KSampler','VAEDecode','SaveImage']
             # Node names are checked directly before any graph is submitted.
             absent = [name for name in required if name not in nodes]
             if absent:
@@ -81,15 +81,21 @@ def main():
         models = json.loads((AI / 'State/install-model-verification.json').read_text('utf-8'))
         if models['status'] != 'PASS':
             raise RuntimeError('Model verification incomplete')
-        core = cuda_probe(sys.executable, '2.6.0+cu126', extensions=True)
+        core = cuda_probe(sys.executable, '2.6.0+cu126')
         image = cuda_probe(args.image_python, '2.10.0+cu130')
+        trellis = cuda_probe(AI/'TrellisRuntime/.venv/Scripts/python.exe', '2.10.0+cu130')
+        probe = subprocess.run([str(AI/'TrellisRuntime/.venv/Scripts/python.exe'),'-c',
+            'import sys;sys.path.insert(0,sys.argv[1]);from pilot import forbidden_check,pipeline_config;import cumesh,flex_gemm,o_voxel;forbidden_check();pipeline_config();print("TRELLIS_IMPORTS_PASS")',str(AI/'TrellisRuntime')],
+            capture_output=True,text=True,timeout=180)
+        if probe.returncode or 'TRELLIS_IMPORTS_PASS' not in probe.stdout:
+            raise RuntimeError('TRELLIS import/model checks failed: '+probe.stderr[-2000:])
         blender = subprocess.run([args.blender, '--background', '--factory-startup', '--python-expr',
-                                  'import bpy; assert bpy.app.version[:3] == (5,0,1); print("LAS_BLENDER_CHECK_PASS")'],
+                                  'import bpy; assert bpy.app.version[:3] == (5,2,2); print("LAS_BLENDER_CHECK_PASS")'],
                                  capture_output=True, text=True, timeout=90,
                                  creationflags=subprocess.CREATE_NO_WINDOW if os.name == 'nt' else 0)
         if blender.returncode or 'LAS_BLENDER_CHECK_PASS' not in blender.stdout:
             raise RuntimeError('Blender smoke check failed: ' + blender.stderr[-2000:])
-        result = {'status': 'PASS', 'core': core, 'image': image, 'blender': '5.0.1 PASS', 'inference_run': False}
+        result = {'status': 'PASS', 'core': core, 'image': image,'trellis':trellis, 'blender': '5.2.2 PASS', 'inference_run': False}
         write_json(AI / 'State/install-verification.json', result)
     print(json.dumps(result, indent=2))
 

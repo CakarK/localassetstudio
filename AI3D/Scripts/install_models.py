@@ -70,28 +70,6 @@ def install_files(lock):
     os.environ['HF_HOME'] = str(AI / 'Models/huggingface')
     from huggingface_hub import hf_hub_download
     report = []
-    for spec in lock['huggingface_cache']:
-        print('HF CACHE', spec['repository'], spec['remote_file'], flush=True)
-        path = Path(hf_hub_download(spec['repository'], spec['remote_file'], revision=spec['revision']))
-        verify(path, spec)
-        # DINO's upstream module opens main without a revision; point its local
-        # offline cache ref at the verified, pinned snapshot (never remote main).
-        repository = AI / 'Models/huggingface/hub' / ('models--' + spec['repository'].replace('/', '--'))
-        (repository / 'refs').mkdir(parents=True, exist_ok=True)
-        (repository / 'refs/main').write_text(spec['revision'], 'utf-8')
-        if spec['remote_file'].endswith('.ckpt'):
-            kind = 'vae' if '/hunyuan3d-vae-' in '/' + spec['remote_file'] else 'diffusion_models'
-            dest = AI / 'ComfyUI/models' / kind / f'hunyuan3d-{kind}-v2-1-fp16.ckpt'
-            if dest.exists():
-                verify(dest, spec)
-            else:
-                dest.parent.mkdir(parents=True, exist_ok=True)
-                try:
-                    os.link(path.resolve(), dest)
-                except OSError:
-                    shutil.copyfile(path, dest)
-                verify(dest, spec)
-        report.append({**spec, 'path': str(path), 'status': 'PASS'})
     for spec in lock['files']:
         path = confined(ROOT, spec['path'])
         url = spec.get('url') or f'https://huggingface.co/{spec["repository"]}/resolve/{spec["revision"]}/{spec["remote_file"]}'

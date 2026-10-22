@@ -158,7 +158,8 @@ def create_app(test_config=None):
     def catalog():
         from .image_providers import load_registry
         source=load_catalog()
-        return jsonify(assets=source,providers=[{'id':k,'name':v['name']} for k,v in load_registry()['providers'].items()])
+        from .geometry_providers import availability
+        return jsonify(assets=source,geometry_providers=[{'id':'trellis2','name':'TRELLIS.2 · 512','available':availability()}],providers=[{'id':k,'name':v['name']} for k,v in load_registry()['providers'].items()])
 
     @app.post('/api/design/compose')
     def compose_design():
@@ -185,6 +186,7 @@ def create_app(test_config=None):
         from .image_providers import load_registry
         data=request.get_json();asset=asset_from_request(data)
         provider=data.get('provider','z-image-turbo')
+        if data.get('geometry_provider','trellis2')!='trellis2':raise ValueError('Removed 3D provider; TRELLIS.2 is required.')
         if provider not in load_registry()['providers']:raise ValueError('Geçersiz görsel modeli.')
         custom=data.get('customization','')
         if not isinstance(custom,str) or len(custom)>1400:raise ValueError('Tasarım notları en fazla 1400 karakter olmalı.')
@@ -210,7 +212,7 @@ def create_app(test_config=None):
         asset={**asset,'quality_sidecar':{'db':str(QUALITY_PATH),'root':str(QUALITY_ROOT)},'image_provider':provider,
             'web_base_prompt':composition['generation_prompt'],'web_customization':custom,'web_customization_language':language,'web_design':design,
             'web_composition':composed}
-        settings=settings_for(asset,{'image_provider':provider,'seed':seed,'prompt':composition['generation_prompt'],
+        settings=settings_for(asset,{'image_provider':provider,'geometry_provider':'trellis2','trellis_steps':12,'seed':seed,'prompt':composition['generation_prompt'],
             'prompt_language':asset.get('prompt_language','en'),
             'negative':composition['negative'],'max_transient_retries':0,'allow_quality_reduction':False,
             'shape_steps':40,'shape_resolution':384,'subprocess_timeout':600})

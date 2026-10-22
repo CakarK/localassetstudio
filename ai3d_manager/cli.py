@@ -55,7 +55,7 @@ def main(argv=None):
             result=execute_phase35(args,db);emit(result)
             return 2 if result.get('status') in ('BLOCKED','FAIL','WARN','NeedsReview') else 0
         if args.command=='image-models':
-            if args.action in ('benchmark','optimized','hunyuan-test'):
+            if args.action in ('benchmark','optimized'):
                 known={a['asset_id'] for a in db.assets()}
                 missing=[a for a in load_catalog(args.catalog,read_settings(args.overrides)) if a['asset_id'] not in known]
                 if missing:db.sync_assets(missing)

@@ -1,0 +1,29 @@
+{
+  "info": {
+    "name": "MarkupSafe",
+    "version": "3.0.4",
+    "license": null,
+    "license_expression": "BSD-3-Clause",
+    "license_files": [
+      "LICENSE.txt"
+    ],
+    "classifiers": [
+      "Development Status :: 5 - Production/Stable",
+      "Environment :: Web Environment",
+      "Intended Audience :: Developers",
+      "Operating System :: OS Independent",
+      "Programming Language :: Python",
+      "Topic :: Internet :: WWW/HTTP :: Dynamic Content",
+      "Topic :: Text Processing :: Markup :: HTML",
+      "Typing :: Typed"
+    ],
+    "project_urls": {
+      "Changes": "https://markupsafe.palletsprojects.com/page/changes/",
+      "Chat": "https://discord.gg/pallets",
+      "Documentation": "https://markupsafe.palletsprojects.com/",
+      "Donate": "https://palletsprojects.com/donate",
+      "Source": "https://github.com/pallets/markupsafe/"
+    },
+    "requires_dist": null
+  }
+}

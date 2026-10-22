@@ -1,0 +1,63 @@
+{
+  "info": {
+    "name": "pillow",
+    "version": "11.3.0",
+    "license": null,
+    "license_expression": "MIT-CMU",
+    "license_files": [
+      "LICENSE"
+    ],
+    "classifiers": [
+      "Development Status :: 6 - Mature",
+      "Programming Language :: Python :: 3 :: Only",
+      "Programming Language :: Python :: 3.10",
+      "Programming Language :: Python :: 3.11",
+      "Programming Language :: Python :: 3.12",
+      "Programming Language :: Python :: 3.13",
+      "Programming Language :: Python :: 3.9",
+      "Programming Language :: Python :: Implementation :: CPython",
+      "Programming Language :: Python :: Implementation :: PyPy",
+      "Topic :: Multimedia :: Graphics",
+      "Topic :: Multimedia :: Graphics :: Capture :: Digital Camera",
+      "Topic :: Multimedia :: Graphics :: Capture :: Screen Capture",
+      "Topic :: Multimedia :: Graphics :: Graphics Conversion",
+      "Topic :: Multimedia :: Graphics :: Viewers",
+      "Typing :: Typed"
+    ],
+    "project_urls": {
+      "Changelog": "https://github.com/python-pillow/Pillow/releases",
+      "Documentation": "https://pillow.readthedocs.io",
+      "Funding": "https://tidelift.com/subscription/pkg/pypi-pillow?utm_source=pypi-pillow&utm_medium=pypi",
+      "Homepage": "https://python-pillow.github.io",
+      "Mastodon": "https://fosstodon.org/@pillow",
+      "Release notes": "https://pillow.readthedocs.io/en/stable/releasenotes/index.html",
+      "Source": "https://github.com/python-pillow/Pillow"
+    },
+    "requires_dist": [
+      "furo; extra == \"docs\"",
+      "olefile; extra == \"docs\"",
+      "sphinx>=8.2; extra == \"docs\"",
+      "sphinx-autobuild; extra == \"docs\"",
+      "sphinx-copybutton; extra == \"docs\"",
+      "sphinx-inline-tabs; extra == \"docs\"",
+      "sphinxext-opengraph; extra == \"docs\"",
+      "olefile; extra == \"fpx\"",
+      "olefile; extra == \"mic\"",
+      "pyarrow; extra == \"test-arrow\"",
+      "check-manifest; extra == \"tests\"",
+      "coverage>=7.4.2; extra == \"tests\"",
+      "defusedxml; extra == \"tests\"",
+      "markdown2; extra == \"tests\"",
+      "olefile; extra == \"tests\"",
+      "packaging; extra == \"tests\"",
+      "pyroma; extra == \"tests\"",
+      "pytest; extra == \"tests\"",
+      "pytest-cov; extra == \"tests\"",
+      "pytest-timeout; extra == \"tests\"",
+      "pytest-xdist; extra == \"tests\"",
+      "trove-classifiers>=2024.10.12; extra == \"tests\"",
+      "typing-extensions; python_version < \"3.10\" and extra == \"typing\"",
+      "defusedxml; extra == \"xmp\""
+    ]
+  }
+}

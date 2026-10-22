@@ -1,0 +1,24 @@
+{
+  "platform": "Windows x64 / CPython 3.12 / torch 2.10.0+cu130",
+  "cuda_architectures": [
+    "sm_86"
+  ],
+  "validated_gpu": "RTX 3090",
+  "files": [
+    {
+      "file": "cumesh-0.0.1-cp312-cp312-win_amd64.whl",
+      "sha256": "c1c4c1666e57a822a0252cab3b65a61474f1292103609f31d7e02a5fd74288ac",
+      "size": 1604540
+    },
+    {
+      "file": "flex_gemm-1.0.0-cp312-cp312-win_amd64.whl",
+      "sha256": "5082997c538d166b79c115d17ef4604584a5e4c60c2c10795d753bf2493ce2d0",
+      "size": 306683
+    },
+    {
+      "file": "o_voxel-0.0.1-cp312-cp312-win_amd64.whl",
+      "sha256": "84a3058ce83c192365fba78651880177a9008aaf1e4a3d572b99b362471270ff",
+      "size": 236744
+    }
+  ]
+}

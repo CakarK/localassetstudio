@@ -37,7 +37,7 @@ def web_subject(db,ident):
     from .web_control import control,snapshot
     job=db.job(ident);row=control(db,ident);out=snapshot(db,ident);asset=json.loads(job['request_json'])
     model=best_model(out)
-    if not model:raise ValueError('Bu işin henüz 3D model dosyası yok.')
+    if not model or not Path(model['info']['path']).is_file():raise ValueError('Bu işin 3D modeli yok veya kullanıcı tarafından silindi.')
     path=Path(model['info']['path']).resolve()
     if not path.is_relative_to(Path(job['output_dir']).resolve()):raise ValueError('Model yolu iş klasörünün dışında.')
     preview=out.get('PreviewsRendered',{}).get('preview_front') or out.get('ReferenceGenerated',{}).get('reference')

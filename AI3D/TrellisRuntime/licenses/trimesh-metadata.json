@@ -1,0 +1,73 @@
+{
+  "info": {
+    "name": "trimesh",
+    "version": "4.11.1",
+    "license": "The MIT License (MIT)\n        \n        Copyright (c) 2023 Michael Dawson-Haggerty\n        \n        Permission is hereby granted, free of charge, to any person obtaining a copy\n        of this software and associated documentation files (the \"Software\"), to deal\n        in the Software without restriction, including without limitation the rights\n        to use, copy, modify, merge, publish, distribute, sublicense, and/or sell\n        copies of the Software, and to permit persons to whom the Software is\n        furnished to do so, subject to the following conditions:\n        \n        The above copyright notice and this permission notice shall be included in all\n        copies or substantial portions of the Software.\n        \n        THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\n        IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\n        FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\n        AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\n        LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\n        OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE\n        SOFTWARE.\n        ",
+    "license_expression": null,
+    "license_files": [
+      "LICENSE.md"
+    ],
+    "classifiers": [
+      "Development Status :: 4 - Beta",
+      "License :: OSI Approved :: MIT License",
+      "Natural Language :: English",
+      "Programming Language :: Python",
+      "Programming Language :: Python :: 3.10",
+      "Programming Language :: Python :: 3.11",
+      "Programming Language :: Python :: 3.12",
+      "Programming Language :: Python :: 3.8",
+      "Programming Language :: Python :: 3.9",
+      "Topic :: Multimedia :: Graphics",
+      "Topic :: Multimedia :: Graphics :: 3D Modeling",
+      "Topic :: Scientific/Engineering"
+    ],
+    "project_urls": {
+      "documentation": "https://trimesh.org",
+      "homepage": "https://github.com/mikedh/trimesh"
+    },
+    "requires_dist": [
+      "numpy>=1.20",
+      "colorlog; extra == \"easy\"",
+      "manifold3d>=2.3.0; python_version < \"3.14\" and extra == \"easy\"",
+      "charset-normalizer; extra == \"easy\"",
+      "lxml; extra == \"easy\"",
+      "jsonschema; extra == \"easy\"",
+      "networkx; extra == \"easy\"",
+      "svg.path; extra == \"easy\"",
+      "pycollada<=0.9.0; python_version < \"3.9\" and extra == \"easy\"",
+      "pycollada; python_version >= \"3.9\" and extra == \"easy\"",
+      "shapely; extra == \"easy\"",
+      "xxhash; extra == \"easy\"",
+      "rtree; extra == \"easy\"",
+      "httpx; extra == \"easy\"",
+      "scipy; extra == \"easy\"",
+      "embreex; platform_machine == \"x86_64\" and extra == \"easy\"",
+      "pillow; extra == \"easy\"",
+      "vhacdx; python_version >= \"3.9\" and extra == \"easy\"",
+      "mapbox_earcut>=1.0.2; python_version >= \"3.9\" and extra == \"easy\"",
+      "sympy; extra == \"recommend\"",
+      "pyglet<2; extra == \"recommend\"",
+      "scikit-image; extra == \"recommend\"",
+      "fast-simplification; extra == \"recommend\"",
+      "python-fcl; extra == \"recommend\"",
+      "cascadio; extra == \"recommend\"",
+      "manifold3d>=2.3.0; python_version >= \"3.14\" and extra == \"recommend\"",
+      "pytest-cov; extra == \"test\"",
+      "pytest; extra == \"test\"",
+      "pyinstrument; extra == \"test\"",
+      "ruff; extra == \"test\"",
+      "coveralls; extra == \"test-more\"",
+      "ezdxf; extra == \"test-more\"",
+      "meshio; extra == \"test-more\"",
+      "xatlas; extra == \"test-more\"",
+      "pytest-beartype; python_version >= \"3.10\" and extra == \"test-more\"",
+      "matplotlib; extra == \"test-more\"",
+      "pymeshlab; python_version < \"3.14\" and extra == \"test-more\"",
+      "triangle; python_version < \"3.14\" and extra == \"test-more\"",
+      "ipython; extra == \"test-more\"",
+      "marimo; extra == \"test-more\"",
+      "openctm; extra == \"deprecated\"",
+      "trimesh[deprecated,easy,recommend,test,test_more]; extra == \"all\""
+    ]
+  }
+}

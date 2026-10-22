@@ -1,0 +1,31 @@
+{
+  "info": {
+    "name": "Jinja2",
+    "version": "3.1.6",
+    "license": null,
+    "license_expression": null,
+    "license_files": null,
+    "classifiers": [
+      "Development Status :: 5 - Production/Stable",
+      "Environment :: Web Environment",
+      "Intended Audience :: Developers",
+      "License :: OSI Approved :: BSD License",
+      "Operating System :: OS Independent",
+      "Programming Language :: Python",
+      "Topic :: Internet :: WWW/HTTP :: Dynamic Content",
+      "Topic :: Text Processing :: Markup :: HTML",
+      "Typing :: Typed"
+    ],
+    "project_urls": {
+      "Changes": "https://jinja.palletsprojects.com/changes/",
+      "Chat": "https://discord.gg/pallets",
+      "Documentation": "https://jinja.palletsprojects.com/",
+      "Donate": "https://palletsprojects.com/donate",
+      "Source": "https://github.com/pallets/jinja/"
+    },
+    "requires_dist": [
+      "MarkupSafe>=2.0",
+      "Babel>=2.7; extra == \"i18n\""
+    ]
+  }
+}

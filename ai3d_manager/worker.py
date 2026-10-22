@@ -9,6 +9,7 @@ from .comfy import ComfyClient, graphs
 from .processes import run_process
 from .prompts import prepare
 from .validation import validate
+from .blender_runtime import default_blender
 
 STAGES = ['PromptPrepared','ReferenceGenerated','ReferenceProcessed','ReferenceApproved','GeometryGenerated',
           'GeometryOptimized','PBRGenerated','Scaled','BlenderExported','PreviewsRendered','Validated','Packaged']
@@ -31,14 +32,17 @@ SETTING_KEYS={
 DEFAULTS={'seed':42,'image_size':512,'image_steps':25,'checkpoint':'dreamshaper_8.safetensors',
  'shape_steps':30,'shape_resolution':256,'view_size':512,'pbr_steps':10,'texture_size':1024,
  'remove_background':True,'reference_policy':'automatic_technical_only','reference_approved':False,
- 'blender':'C:/Program Files/Blender Foundation/Blender 5.0/blender.exe','subprocess_timeout':300,
+ 'blender':default_blender(),'subprocess_timeout':300,'geometry_provider':'trellis2','trellis_steps':12,
  'comfy_url':'http://127.0.0.1:8190','comfy_timeout':3600,'max_transient_retries':1,'allow_quality_reduction':False}
-ALLOWED_SETTINGS=set(DEFAULTS)|{'prompt','prompt_language','style','negative','variant_prompt','polygon_target','polygon_range','footprint_m','height_m','image_provider','image_profile','category_profile','segmentation_strategy'}
+ALLOWED_SETTINGS=set(DEFAULTS)|{'prompt','prompt_language','style','negative','variant_prompt','polygon_target','polygon_range','footprint_m','height_m','image_provider','image_profile','category_profile','segmentation_strategy','geometry_provider','trellis_steps'}
 
 def settings_for(asset,overrides=None):
     overrides=overrides or {}
     if set(overrides)-ALLOWED_SETTINGS:raise ValueError('Unknown setting(s): '+', '.join(set(overrides)-ALLOWED_SETTINGS))
-    result={**DEFAULTS,'blender':os.environ.get('LAS_BLENDER_PATH',DEFAULTS['blender']),**{k:asset.get(k) for k in ('polygon_target','polygon_range','footprint_m','height_m','texture_size')},**overrides}
+    result={**DEFAULTS,'blender':default_blender(),**{k:asset.get(k) for k in ('polygon_target','polygon_range','footprint_m','height_m','texture_size')},**overrides}
+    from .geometry_providers import provider
+    provider(result)
+    if type(result.get('trellis_steps',12))!=int or not 1<=result.get('trellis_steps',12)<=50:raise ValueError('TRELLIS steps must be 1..50')
     if not isinstance(result['polygon_target'],int) or result['polygon_target']<100:raise ValueError('Invalid polygon target')
     if result['texture_size'] not in (512,1024,2048,4096):raise ValueError('Unsupported texture size')
     if result['footprint_m'] is not None and (len(result['footprint_m'])!=2 or min(result['footprint_m'])<=0):raise ValueError('Invalid footprint')
@@ -107,12 +111,20 @@ class Worker:
         code_files={
           'PromptPrepared':[ROOT/'ai3d_manager/prompts.py',AI/'Scripts/prompt_guard.py'],
           'ReferenceGenerated':[ROOT/'ai3d_manager/comfy.py',AI/'sources.lock.json'],
-          'GeometryGenerated':[ROOT/'ai3d_manager/comfy.py',AI/'sources.lock.json',AI/'Scripts/managed_nodes.py'],
-          'GeometryOptimized':[ROOT/'ai3d_manager/mesh_ops.py'], 'PBRGenerated':[ROOT/'ai3d_manager/comfy.py',AI/'sources.lock.json',AI/'Scripts/rei_nodes.py'],
+          'GeometryGenerated':[ROOT/'ai3d_manager/comfy.py',AI/'sources.lock.json',ROOT/'ai3d_manager/geometry_providers.py'],
+          'GeometryOptimized':[ROOT/'ai3d_manager/mesh_ops.py'], 'PBRGenerated':[ROOT/'ai3d_manager/comfy.py',AI/'sources.lock.json',ROOT/'ai3d_manager/geometry_providers.py'],
           'Scaled':[ROOT/'ai3d_manager/mesh_ops.py'],'BlenderExported':[AI/'Scripts/blender_export.py'],
           'PreviewsRendered':[AI/'Scripts/blender_preview.py'],'Validated':[ROOT/'ai3d_manager/validation.py']}.get(stage,[])
         params['code']={p.name:file_info(p)['sha256'] for p in code_files}
         params['stage_protocol']=1
+        if settings.get('geometry_provider')=='trellis2' and stage in ('ReferenceProcessed','GeometryGenerated','GeometryOptimized','PBRGenerated'):
+            from .geometry_providers import RUNTIME
+            params['geometry_provider']='trellis2'
+            params['trellis_steps']=settings.get('trellis_steps',12)
+            if stage=='PBRGenerated':params['shape_latent']=self.results.get('GeometryGenerated',{}).get('shape_latent')
+            params['trellis_runtime']={str(p.relative_to(ROOT)):file_info(p)['sha256'] for p in
+                [ROOT/'ai3d_manager/geometry_providers.py',ROOT/'ai3d_manager/trellis_axes.py',RUNTIME/'web_stage.py',RUNTIME/'pilot.py',
+                 RUNTIME/'src/TRELLIS.2/o-voxel/o_voxel/postprocess.py',RUNTIME/'public-model-downloads.json',RUNTIME/'dino-downloads.json'] if p.is_file()}
         return params
 
     def run(self,ident):
@@ -123,6 +135,8 @@ class Worker:
             if job['status']=='Cancelled':return job
             Path(job['output_dir']).mkdir(parents=True,exist_ok=True)
             try:
+                if settings.get('geometry_provider')!='trellis2':
+                    raise ProductionError('ProviderRemoved','Legacy Hunyuan execution has been removed; create a new TRELLIS job.')
                 request_file=Path(job['output_dir'])/'request.json'
                 # Recover a crash between the enqueue DB commit and disk snapshot.
                 if not request_file.exists():atomic_json(request_file,asset)
@@ -234,6 +248,9 @@ class Worker:
                 provider=ImageGenerationProvider(provider_id(asset,settings)).spec
                 value.update(image_provider=provider,image_profile=settings.get('image_profile','controlled'),negative_applied_to=[provider['id']+' negative conditioning'] if provider['negative_prompt'] else [],negative_capability=provider['negative_prompt'])
             atomic_json(work/'prompt.json',value);return {'prompt':work/'prompt.json'}
+        if settings.get('geometry_provider')=='trellis2' and stage in ('ReferenceProcessed','GeometryOptimized'):
+            from .geometry_providers import execute
+            return execute(self,stage,attempt,settings)
         if stage in GPU_STAGES:return self.gpu_stage(stage,attempt,settings)
         if stage=='ReferenceProcessed':
             if settings.get('segmentation_strategy'):
@@ -291,6 +308,11 @@ class Worker:
         raise ValueError('Unknown stage: '+stage)
 
     def gpu_stage(self,stage,attempt,settings):
+        if stage in ('GeometryGenerated','PBRGenerated'):
+            if settings.get('geometry_provider')!='trellis2':
+                raise ProductionError('ProviderRemoved','Only TRELLIS 3D inference is supported; legacy mesh graphs were removed.')
+            from .geometry_providers import execute
+            return execute(self,stage,attempt,settings)
         # Phase 3 may have crashed after submitting a remote VLM inference. Its
         # persistent reservation survives the OS lock and blocks GPU overlap.
         from .quality_vlm import check_vlm_reservation
@@ -359,6 +381,12 @@ class Worker:
                 if not destination.exists():
                     destination.parent.mkdir(parents=True,exist_ok=True);shutil.copyfile(path,destination)
         shutil.copyfile(Path(self.db.job(attempt['job_id'])['output_dir'])/'request.json',staging/'request.json')
+        job_settings=json.loads(self.db.job(attempt['job_id'])['settings_json'])
+        if job_settings.get('geometry_provider')=='trellis2':
+            atomic_json(staging/'geometry-provider.json',{'provider':'trellis2','pipeline':'512',
+                'seed':job_settings['seed'],'steps':job_settings.get('trellis_steps',12),
+                'texture_size':job_settings['texture_size'],'normal_produced':False,'ao_produced':False,
+                'stages':{stage:json.loads(self.path(stage,'provider_report').read_text('utf-8')) for stage in ('GeometryGenerated','PBRGenerated')}})
         atomic_json(staging/'manifest.json',{'state':'Packaged','job_id':attempt['job_id'],
             'files':{str(p.relative_to(staging)):{k:v for k,v in file_info(p).items() if k!='path'} for p in staging.rglob('*') if p.is_file()},
             'validation':'validation.json','live_job_status':str(Path(self.db.job(attempt['job_id'])['output_dir'])/'job.json')})

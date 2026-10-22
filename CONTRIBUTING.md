@@ -1,6 +1,6 @@
 # Contributing to Local Asset Studio
 
-Read [the installation guide](docs/INSTALLATION.md) before running inference. Full production requires a supported **24 GB VRAM NVIDIA GPU**, separate Hunyuan/image environments, Blender and local Ollama models.
+Read [the installation guide](docs/INSTALLATION.md) before running inference. Full production requires a supported **24 GB VRAM NVIDIA GPU**, separate application/image/TRELLIS environments, Blender and local Ollama models.
 
 Keep changes focused and preserve these contracts:
 

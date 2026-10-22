@@ -1,0 +1,50 @@
+{
+  "files": [
+    {
+      "model": "facebook/dinov3-vitl16-pretrain-lvd1689m",
+      "revision": "ea8dc2863c51be0a264bab82070e3e8836b02d51",
+      "file": "LICENSE.md",
+      "path": "models/facebook__dinov3-vitl16-pretrain-lvd1689m/LICENSE.md",
+      "bytes": 7503,
+      "sha256": "25d122eb8f5b880fd23c736fb6ea8018ee45c12237e00b8a86d14c653904999e",
+      "publisher_sha256": null
+    },
+    {
+      "model": "facebook/dinov3-vitl16-pretrain-lvd1689m",
+      "revision": "ea8dc2863c51be0a264bab82070e3e8836b02d51",
+      "file": "README.md",
+      "path": "models/facebook__dinov3-vitl16-pretrain-lvd1689m/README.md",
+      "bytes": 14520,
+      "sha256": "5395522a8a611d0578b6036f47e60445381ee4b2c7508f0e93d9e4c1e876fa63",
+      "publisher_sha256": null
+    },
+    {
+      "model": "facebook/dinov3-vitl16-pretrain-lvd1689m",
+      "revision": "ea8dc2863c51be0a264bab82070e3e8836b02d51",
+      "file": "config.json",
+      "path": "models/facebook__dinov3-vitl16-pretrain-lvd1689m/config.json",
+      "bytes": 745,
+      "sha256": "135ecd23e34a70b6fbed8b083fdecb319b7e3a54e3d849258bbe4ddcf1783bb5",
+      "publisher_sha256": null
+    },
+    {
+      "model": "facebook/dinov3-vitl16-pretrain-lvd1689m",
+      "revision": "ea8dc2863c51be0a264bab82070e3e8836b02d51",
+      "file": "model.safetensors",
+      "path": "models/facebook__dinov3-vitl16-pretrain-lvd1689m/model.safetensors",
+      "bytes": 1212559808,
+      "sha256": "dcb2e45127cccbf1601e5f42fef165eea275c8e5213197e8dcf3f48822718179",
+      "publisher_sha256": "dcb2e45127cccbf1601e5f42fef165eea275c8e5213197e8dcf3f48822718179"
+    },
+    {
+      "model": "facebook/dinov3-vitl16-pretrain-lvd1689m",
+      "revision": "ea8dc2863c51be0a264bab82070e3e8836b02d51",
+      "file": "preprocessor_config.json",
+      "path": "models/facebook__dinov3-vitl16-pretrain-lvd1689m/preprocessor_config.json",
+      "bytes": 585,
+      "sha256": "960c41d1f3a7778b936365769a2d90550b318a6c0a53a0296957adacfe5e0dd7",
+      "publisher_sha256": null
+    }
+  ],
+  "elapsed_seconds": 2.2179999999934807
+}

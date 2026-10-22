@@ -1,0 +1,20 @@
+{
+  "info": {
+    "name": "torchvision",
+    "version": "0.25.0",
+    "license": "BSD",
+    "license_expression": null,
+    "license_files": null,
+    "classifiers": [],
+    "project_urls": {
+      "Homepage": "https://github.com/pytorch/vision"
+    },
+    "requires_dist": [
+      "numpy",
+      "torch==2.10.0",
+      "pillow!=8.3.*,>=5.3.0",
+      "gdown>=4.7.3; extra == \"gdown\"",
+      "scipy; extra == \"scipy\""
+    ]
+  }
+}

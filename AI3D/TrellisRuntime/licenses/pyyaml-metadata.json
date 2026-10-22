@@ -1,0 +1,41 @@
+{
+  "info": {
+    "name": "PyYAML",
+    "version": "6.0.3",
+    "license": "MIT",
+    "license_expression": null,
+    "license_files": [
+      "LICENSE"
+    ],
+    "classifiers": [
+      "Development Status :: 5 - Production/Stable",
+      "Intended Audience :: Developers",
+      "License :: OSI Approved :: MIT License",
+      "Operating System :: OS Independent",
+      "Programming Language :: Cython",
+      "Programming Language :: Python",
+      "Programming Language :: Python :: 3",
+      "Programming Language :: Python :: 3.10",
+      "Programming Language :: Python :: 3.11",
+      "Programming Language :: Python :: 3.12",
+      "Programming Language :: Python :: 3.13",
+      "Programming Language :: Python :: 3.14",
+      "Programming Language :: Python :: 3.8",
+      "Programming Language :: Python :: 3.9",
+      "Programming Language :: Python :: Implementation :: CPython",
+      "Programming Language :: Python :: Implementation :: PyPy",
+      "Topic :: Software Development :: Libraries :: Python Modules",
+      "Topic :: Text Processing :: Markup"
+    ],
+    "project_urls": {
+      "Bug Tracker": "https://github.com/yaml/pyyaml/issues",
+      "CI": "https://github.com/yaml/pyyaml/actions",
+      "Documentation": "https://pyyaml.org/wiki/PyYAMLDocumentation",
+      "Download": "https://pypi.org/project/PyYAML/",
+      "Homepage": "https://pyyaml.org/",
+      "Mailing lists": "http://lists.sourceforge.net/lists/listinfo/yaml-core",
+      "Source Code": "https://github.com/yaml/pyyaml"
+    },
+    "requires_dist": null
+  }
+}

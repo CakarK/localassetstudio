@@ -104,16 +104,4 @@ def graphs(stage,namespace,settings,prompt=None,image_name=None,mesh_path=None):
                    steps=settings['image_steps'],cfg=7.,sampler_name='dpmpp_2m',scheduler='karras',denoise=1.),
           '6':node('VAEDecode',samples=['5',0],vae=['1',2]),
           '7':node('SaveImage',images=['6',0],filename_prefix=namespace+'/reference')}
-    if stage=='GeometryGenerated':
-        return {'1':node('Hy3D21LoadImageWithTransparency',image=image_name),
-          '2':node('Hy3D21MeshGenerator',model='hunyuan3d-diffusion_models-v2-1-fp16.ckpt',image=['1',2],
-                   steps=settings['shape_steps'],guidance_scale=5.,seed=settings['seed'],attention_mode='sdpa'),
-          '3':node('Hy3D21VAELoader',model_name='hunyuan3d-vae-v2-1-fp16.ckpt'),
-          '4':node('Hy3D21VAEDecode',vae=['3',0],latents=['2',0],box_v=1.01,octree_resolution=settings['shape_resolution'],
-                   num_chunks=4000,mc_level=0.,mc_algo='mc',enable_flash_vdm=True,force_offload=True),
-          '5':node('G3DCManagedSaveMesh',mesh=['4',0],namespace=namespace,filename='geometry.glb')}
-    return {'1':node('Hy3D21LoadImageWithTransparency',image=image_name),
-       '2':node('G3DCManagedLoadMesh',path=str(mesh_path)),
-       '3':node('LocalAssetStudioPBR',mesh=['2',0],image=['1',2],project_name=namespace,texture_size=settings['texture_size'],
-                view_size=settings['view_size'],steps=settings['pbr_steps'],seed=settings['seed']),
-       '4':node('G3DCManagedSaveMesh',mesh=['3',0],namespace=namespace,filename='pbr.glb')}
+    raise ProductionError('ProviderRemoved','3D generation uses the isolated TRELLIS runtime, not ComfyUI mesh nodes.')

@@ -1,0 +1,46 @@
+{
+  "info": {
+    "name": "kornia-rs",
+    "version": "0.2.0",
+    "license": null,
+    "license_expression": null,
+    "license_files": null,
+    "classifiers": [
+      "Development Status :: 4 - Beta",
+      "Environment :: GPU",
+      "Intended Audience :: Science/Research",
+      "License :: OSI Approved :: Apache Software License",
+      "Operating System :: OS Independent",
+      "Programming Language :: Python",
+      "Programming Language :: Python :: 3",
+      "Programming Language :: Python :: 3 :: Only",
+      "Programming Language :: Python :: 3.10",
+      "Programming Language :: Python :: 3.11",
+      "Programming Language :: Python :: 3.12",
+      "Programming Language :: Python :: 3.13",
+      "Programming Language :: Python :: 3.14",
+      "Programming Language :: Python :: 3.8",
+      "Programming Language :: Python :: 3.9",
+      "Programming Language :: Python :: Free Threading :: 3 - Stable",
+      "Programming Language :: Python :: Implementation :: CPython",
+      "Programming Language :: Python :: Implementation :: PyPy",
+      "Programming Language :: Rust",
+      "Topic :: Scientific/Engineering",
+      "Topic :: Scientific/Engineering :: Artificial Intelligence",
+      "Topic :: Scientific/Engineering :: Image Processing"
+    ],
+    "project_urls": {
+      "Homepage": "http://kornia.org",
+      "documentation": "https://kornia.readthedocs.io",
+      "homepage": "http://www.kornia.org",
+      "repository": "https://github.com/kornia/kornia-rs"
+    },
+    "requires_dist": [
+      "nvidia-cuda-nvrtc-cu12; platform_system == \"Linux\" and extra == \"cuda\"",
+      "pytest; extra == \"dev\"",
+      "pytest-run-parallel; extra == \"dev\"",
+      "numpy; extra == \"dev\"",
+      "torch; extra == \"dev\""
+    ]
+  }
+}

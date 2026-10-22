@@ -16,7 +16,7 @@ jobs:
       - name: Minimal source-test dependencies (no GPU runtimes/models)
         run: python -m pip install numpy==1.26.4 trimesh==5.1.1 pillow==12.3.0 requests==2.34.2 Flask==3.1.3 jsonschema==4.26.0
       - name: Hash, resume, preservation and Windows PowerShell contracts
-        run: python -m unittest tests.test_installation -v
+        run: python -X utf8 -m unittest tests.test_installation tests.test_trellis_release tests.test_trellis_removal tests.test_trellis_provider tests.test_blender_runtime -v
       - name: Read-only full installation plan
         shell: powershell
         run: .\Install-LocalAssetStudio.ps1 -Plan
